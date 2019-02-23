@@ -8,11 +8,20 @@
 !colors/*/*/*
 !colors/*/*/*/*
 
+!.config/
+!.config/nvim
+!.config/nvim/*
+.config/nvim/.netrwhist
+
+!.gitignore
+
 !nvim/
 !nvim/*
 !nvim/*/*
 !nvim/*/*/*
 
-!.zshrc
+!.profile
 
-!.gitignore
+!.vimrc
+
+!.zshrc

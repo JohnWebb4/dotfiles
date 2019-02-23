@@ -104,3 +104,10 @@ source $ZSH/oh-my-zsh.sh
 
 # My addons
 export ANDROID_HOME="/home/john/Android/Sdk"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+alias nvim=/usr/local/share/nvim/nvim.appimage
+alias sudo="sudo "
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

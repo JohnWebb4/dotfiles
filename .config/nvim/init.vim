@@ -15,7 +15,7 @@ set expandtab         " expand tabs to spaces
 set tabstop=2         " actual tab uses 8 spaces
 
 set mouse=a           " click tabs, drag tabs, and drag split bars
-set clipboard=unnamed " yank and paste with the system clipboard
+set clipboard=unnamedplus " yank and paste with the system clipboard
 
 set directory-=.      " don't store swapfiles in the current directory
 set list              " show trailing whitespace
@@ -125,9 +125,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin('~/.config/nvim/autoload')
 
-source $HOME/dotfiles/nvim/bundles.vimrc
+source $HOME/.config/nvim/bundles.vimrc
 
 call plug#end()
 
@@ -154,17 +154,17 @@ hi VimwikiHeader3 guifg=#7f9d77
 " Lightline Config
 " ===============================================================================
 if !exists('g:lightline')
-  source $HOME/dotfiles/nvim/lightline.vim
+  source $HOME/.config/nvim/lightline.vim
 endif
 
 
 " ===============================================================================
 " FZF Config
 " ===============================================================================
-source $HOME/dotfiles/nvim/fzf.vim
+source $HOME/.config/nvim/fzf.vim
 
 
 " ===============================================================================
 " Coc config
 " ===============================================================================
-source $HOME/dotfiles/nvim/coc.vim
+source $HOME/.config/nvim/coc.vim

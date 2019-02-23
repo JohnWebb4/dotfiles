@@ -23,14 +23,13 @@ Plug 'chriskempson/base16-vim'
 "  =========================================
 "     FZF Goodness
 "  =========================================
-Plug '/usr/local/opt/fzf'
+Plug '~/.fzf'
 
 Plug 'junegunn/fzf.vim'
   " nnoremap <leader>f :Files<Cr>
   nnoremap <leader>g :GFiles<Cr>
   " nnoremap <leader>l :Lines<Cr>
   nnoremap <leader>a :Ag<Cr>
-
 
 "  =========================================
 "     Denite
@@ -78,7 +77,7 @@ Plug 'w0rp/ale'
 
 Plug 'plasticboy/vim-markdown'
 
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
   let g:prettier#config#semi = 'true'
   let g:prettier#config#jsx_bracket_same_line = 'false'
   let g:prettier#config#bracket_spacing = 'true'
