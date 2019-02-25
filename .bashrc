@@ -135,3 +135,4 @@ export PATH="$PATH:/usr/local/go/bin"
 
 # Bash
 export PATH="$PATH://home/john/Documents/bash_scripts"
+
