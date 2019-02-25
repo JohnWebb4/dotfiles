@@ -3,6 +3,7 @@
 
 # Web assembly
 export PATH="//home/john/.local/share/emsdk:/home/john/.local/share/emsdk/clang/e1.38.25_64bit:/home/john/.local/share/emsdk/node/8.9.1_64bit/bin:/home/john/.local/share/emsdk/emscripten/1.38.25:$PATH"
+export PATH="$PATH:/usr/local/share/flutter/bin"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/john/.oh-my-zsh"
@@ -111,3 +112,7 @@ alias nvim=/usr/local/share/nvim/nvim.appimage
 alias sudo="sudo "
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
