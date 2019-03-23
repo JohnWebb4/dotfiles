@@ -132,3 +132,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # GO
 export PATH="$PATH:/usr/local/go/bin"
+
+# Bash
+export PATH="$PATH://home/john/Documents/bash_scripts"
