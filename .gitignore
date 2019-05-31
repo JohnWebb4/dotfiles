@@ -14,8 +14,9 @@
 .config/nvim/.netrwhist
 
 !Documents/
-!Documents/bash_scripts
-!Documents/bash_scripts/*
+!Documents/bin
+!Documents/bin/*
+!Documents/bin/*/*
 
 !.gitignore
 

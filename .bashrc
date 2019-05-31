@@ -126,7 +126,7 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-if [[ unameOut == 'Linux' ]]; then
+if [[ $unameOut == 'Linux' ]]; then
     # Configure vim to use App image
     alias nvim=/usr/local/share/nvim/nvim.appimage
     alias sudo="sudo "
@@ -141,7 +141,7 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$PATH:/usr/local/go/bin"
 
 # Bash
-export PATH="$PATH://home/john/Documents/bash_scripts"
+export PATH="$PATH://home/john/Documents/bin"
 
 # Ruby
 export PATH="$PATH://home/john/.gem/ruby/2.6.0/bin"

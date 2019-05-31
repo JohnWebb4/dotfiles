@@ -15,7 +15,7 @@ export PATH="$PATH:/usr/local/go/bin"
 export ZSH="/home/john/.oh-my-zsh"
 
 # Bash
-export PATH="$PATH://home/john//Documents/bash_scripts"
+export PATH="$PATH://home/john//Documents/bin"
 
 # Ruby
 export PATH="$PATH://home/john/.gem/ruby/2.6.0/bin"
@@ -120,7 +120,7 @@ export ANDROID_HOME="/home/john/Android/Sdk"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-if [[ unameOut == 'Linux' ]]; then
+if [[ $unameOut == 'Linux' ]]; then
     # Configure vim to use App image
     alias nvim=/usr/local/share/nvim/nvim.appimage
     alias sudo="sudo "
