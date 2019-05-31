@@ -1,14 +1,22 @@
-# Linux Configuration Dot Files
+# Configuration Dot Files
 
-- Save all the setup when setting up terminal in linux
+- All configuration files and setup steps when setting up ZSH terminal
+
+## OS Supports
+
+- Linux (Ubuntu, Arch Linux)
+- Mac
 
 ## Includes
+
 - Bash
+- My Bash Scripts
 - NeoVim
 - Zsh
 
 ## Setup
-1. Install App Image of NeoVim [here](https://github.com/neovim/neovim/wiki/Installing-Neovim)
+
+1. Install NeoVim (If Linux, you need the app image) [here](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 1. Install NVM [here](https://github.com/creationix/nvm)
 1. Install NVM Node and alias default
 1. Install Yarn [here](https://yarnpkg.com/en/docs/install#debian-stable)
@@ -22,6 +30,5 @@
 1. Install Ruby [here](https://www.ruby-lang.org/en/downloads/)
 1. `Gem install neovim`
 1. `Gem environment` and ensure ruby is in path
-1. Install clipboard tool (xclip)
+1. If Linux, install clipboard tool (xclip)
 1. Run :checkhealth and address issues
-

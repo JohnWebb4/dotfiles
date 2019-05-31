@@ -1,3 +1,6 @@
+# Get OS name
+unameOut="$(uname -s)"
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -123,8 +126,12 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-alias nvim=/usr/local/share/nvim/nvim.appimage
-alias sudo="sudo "
+if [[ unameOut == 'Linux' ]]; then
+    # Configure vim to use App image
+    alias nvim=/usr/local/share/nvim/nvim.appimage
+    alias sudo="sudo "
+
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -155,3 +162,7 @@ else
 fi
 unset __conda_setup
 # <<< conda init <<<
+
+# Cleanup
+# Unset OS name
+unset unameOut

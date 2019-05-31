@@ -1,3 +1,6 @@
+# Get OS name
+unameOut="$(uname -s)"
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -117,8 +120,12 @@ export ANDROID_HOME="/home/john/Android/Sdk"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-alias nvim=/usr/local/share/nvim/nvim.appimage
-alias sudo="sudo "
+if [[ unameOut == 'Linux' ]]; then
+    # Configure vim to use App image
+    alias nvim=/usr/local/share/nvim/nvim.appimage
+    alias sudo="sudo "
+
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -142,3 +149,7 @@ else
 fi
 unset __conda_setup
 # <<< conda init <<<
+
+# Cleanup
+# Unset OS name
+unset unameOut
