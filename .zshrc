@@ -4,21 +4,53 @@ unameOut="$(uname -s)"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Web assembly
-export PATH="//home/john/.local/share/emsdk:/home/john/.local/share/emsdk/clang/e1.38.25_64bit:/home/john/.local/share/emsdk/node/8.9.1_64bit/bin:/home/john/.local/share/emsdk/emscripten/1.38.25:$PATH"
+# All PATH Variables
+# If you come from bash you might have to change your $PATH.
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+# Flutter
 export PATH="$PATH:/usr/local/share/flutter/bin"
-
 # GO
 export PATH="$PATH:/usr/local/go/bin"
 
-# Path to your oh-my-zsh installation.
-export ZSH="/home/john/.oh-my-zsh"
+# Yarn
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # Bash
-export PATH="$PATH://home/john//Documents/bin"
+export PATH="$PATH:$HOME//Documents/bin"
 
-# Ruby
-export PATH="$PATH://home/john/.gem/ruby/2.6.0/bin"
+if [[ $unameOut == 'Linux' ]]; then
+  # Ruby
+  export PATH="$PATH://home/john/.gem/ruby/2.6.0/bin"
+
+  # Web assembly
+  export PATH="//home/john/.local/share/emsdk:/home/john/.local/share/emsdk/clang/e1.38.25_64bit:/home/john/.local/share/emsdk/node/8.9.1_64bit/bin:/home/john/.local/share/emsdk/emscripten/1.38.25:$PATH"
+else
+  export PATH="$PATH:/Users/john.webb/kotlinc/bin"
+  export PATH="$PATH:/Library/Ruby/Gems/2.3.0"
+  export PATH="$PATH:/Users/john.webb/.gem/ruby/2.3.0"
+fi
+
+# ZSH Config folder
+if [[ $unameOut == 'Linux' ]]; then
+  export ZSH="/home/john/.oh-my-zsh"
+else
+  export ZSH="/Users/john.webb/.oh-my-zsh"
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion 
+
+# Android Platform tools
+# Android Home
+if [[ $unameOut == 'Linux' ]]; then
+  export ANDROID_HOME="/home/john/Android/Sdk"
+else
+  export PATH=$PATH:/Users/john.webb/Library/Android/sdk/platform-tools
+
+  export ANDROID_HOME=/Users/john.webb/Library/Android/sdk
+fi
+
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -116,15 +148,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # My addons
-export ANDROID_HOME="/home/john/Android/Sdk"
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
 if [[ $unameOut == 'Linux' ]]; then
     # Configure vim to use App image
     alias nvim=/usr/local/share/nvim/nvim.appimage
     alias sudo="sudo "
-
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -153,3 +180,16 @@ unset __conda_setup
 # Cleanup
 # Unset OS name
 unset unameOut
+# FZF Shit
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,.npm,.nvm,.Trash,node_modules,*/__snapshots__}/*" 2> /dev/null'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+
+if [[ $unameOut == 'Linux' ]]; then
+else
+  # The next line updates PATH for the Google Cloud SDK.
+  if [ -f '/Users/john.webb/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/john.webb/google-cloud-sdk/path.zsh.inc'; fi
+
+  # The next line enables shell command completion for gcloud.
+  if [ -f '/Users/john.webb/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/john.webb/google-cloud-sdk/completion.zsh.inc'; fi
+fi

@@ -1,3 +1,5 @@
+let s:uname = system("uname -s")
+
 set nocompatible
 set autoread
 
@@ -15,7 +17,12 @@ set expandtab         " expand tabs to spaces
 set tabstop=2         " actual tab uses 8 spaces
 
 set mouse=a           " click tabs, drag tabs, and drag split bars
-set clipboard+=unnamedplus " yank and paste with the system clipboard
+
+if(s:uname == "Linux")
+  set clipboard+=unnamedplus " yank and paste with the system clipboard
+else
+  set clipboard=unnamed " yank and paste with the system clipboard
+endif
 
 set directory-=.      " don't store swapfiles in the current directory
 set list              " show trailing whitespace
@@ -125,7 +132,11 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin('~/.config/nvim/autoload')
+if(s:uname == "Linux")
+  call plug#begin('~/.config/nvim/autoload')
+else
+  call plug#begin('~/.local/share/nvim/plugged')
+endif
 
 source $HOME/.config/nvim/bundles.vimrc
 
@@ -134,15 +145,28 @@ call plug#end()
 call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
 call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
 
-if(has("nvim"))
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+if(s:uname == "Linux")
+  if(has("nvim"))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+
+  set t_Co=256
+  set termguicolors
+
+  set background=dark
+  colorscheme base16-tomorrow-night
+else
+  set t_Co=256
+  set termguicolors
+
+  " Dark mode
+  set background=dark
+  colorscheme snow
+
+  " Light mode
+  " set background=light
+  " colorscheme plain
 endif
-
-set t_Co=256
-set termguicolors
-
-set background=dark
-colorscheme base16-tomorrow-night
 
 syntax on
 

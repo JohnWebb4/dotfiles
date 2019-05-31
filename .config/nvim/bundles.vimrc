@@ -3,6 +3,10 @@
 "  =========================================
 Plug 'tpope/vim-repeat'
 
+"  =========================================
+"    Config Variables
+"  =========================================
+let s:uname = system("uname -s")
 
 "  =========================================
 "     Colorschemes
@@ -23,18 +27,23 @@ Plug 'chriskempson/base16-vim'
 "  =========================================
 "     FZF Goodness
 "  =========================================
-Plug '~/.fzf'
+if(s:uname == "Linux")
+  Plug '~/.fzf'
+else
+  Plug '/usr/local/opt/fzf'
+endif
 
 Plug 'junegunn/fzf.vim'
   " nnoremap <leader>f :Files<Cr>
   nnoremap <leader>g :GFiles<Cr>
   " nnoremap <leader>l :Lines<Cr>
-  nnoremap <leader>a :Ag<Cr>
+  " nnoremap <leader>a :Ag<Cr>
 
 "  =========================================
 "     Denite
 "  =========================================
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc-denite'
 
 Plug 'Shougo/denite.nvim'
 Plug 'chemzqm/denite-git'
@@ -131,6 +140,7 @@ Plug 'HerringtonDarkholme/yats.vim', { 'for': [
       \ 'typescriptreact'
       \ ] }
 
+Plug 'posva/vim-vue'
 
 "  =========================================
 "     HTML/CSS
