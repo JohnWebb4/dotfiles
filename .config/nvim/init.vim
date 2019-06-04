@@ -1,4 +1,8 @@
-let s:uname = system("uname -s")
+let s:uname = "Windows"
+
+if has("unix")
+  let s:uname=system("uname -s")
+endif
 
 set nocompatible
 set autoread
@@ -18,7 +22,7 @@ set tabstop=2         " actual tab uses 8 spaces
 
 set mouse=a           " click tabs, drag tabs, and drag split bars
 
-if(s:uname == "Linux")
+if(s:uname == "Linux\n")
   set clipboard+=unnamedplus " yank and paste with the system clipboard
 else
   set clipboard=unnamed " yank and paste with the system clipboard
@@ -132,7 +136,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-if(s:uname == "Linux")
+if(s:uname == "Linux\n")
   call plug#begin('~/.config/nvim/autoload')
 else
   call plug#begin('~/.local/share/nvim/plugged')
@@ -145,7 +149,7 @@ call plug#end()
 call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
 call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
 
-if(s:uname == "Linux")
+if(s:uname == "Linux\n")
   if(has("nvim"))
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   endif
