@@ -1,14 +1,19 @@
+import sys
 import imageio
 import glob
 from IPython import display
 
-FPS = 10 # s
+FPS = int(sys.argv[1]) if len(sys.argv) > 1 else 10 # s
 anim_file = 'gif.gif'
 
 kargs = { 'duration': 1 / FPS }
 
 with imageio.get_writer(anim_file, mode='I', **kargs) as writer:
-  filenames = glob.glob('image*.png')
+  filenames = glob.glob('image*.*')
+
+  if (len(filenames) == 0):
+      raise ValueError('No image files found beginning with image')
+
   filenames = sorted(filenames)
   last = -1
   for i,filename in enumerate(filenames):
