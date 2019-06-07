@@ -27,7 +27,7 @@ Plug 'chriskempson/base16-vim'
 "  =========================================
 "     FZF Goodness
 "  =========================================
-if(s:uname == "Linux")
+if(s:uname == "Linux\n")
   Plug '~/.fzf'
 else
   Plug '/usr/local/opt/fzf'

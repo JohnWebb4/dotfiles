@@ -177,9 +177,6 @@ fi
 unset __conda_setup
 # <<< conda init <<<
 
-# Cleanup
-# Unset OS name
-unset unameOut
 # FZF Shit
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,.npm,.nvm,.Trash,node_modules,*/__snapshots__}/*" 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -193,3 +190,7 @@ else
   # The next line enables shell command completion for gcloud.
   if [ -f '/Users/john.webb/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/john.webb/google-cloud-sdk/completion.zsh.inc'; fi
 fi
+
+# Cleanup
+# Unset OS name
+unset unameOut
