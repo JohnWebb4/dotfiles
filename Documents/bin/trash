@@ -1,2 +1,12 @@
 #!/bin/bash
-mv "$@" ~/.Trash
+# Get OS
+unameOut="$(uname -s)"
+
+if [[ $unameOut == 'Linux' ]]; then
+  mv "$@" ~/.config/Trash
+else
+  mv "$@" ~/.Trash
+fi
+
+# Cleanup
+unset unameOut
