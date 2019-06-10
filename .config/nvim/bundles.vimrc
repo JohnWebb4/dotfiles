@@ -60,12 +60,13 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 Plug 'w0rp/ale'
   let g:ale_lint_on_text_changed = 'always'
+  let g:ale_fix_on_save = 1
   let g:ale_linters = {
-      \ 'javascript': ['tslint', 'eslint'],
-      \ 'javascript.jsx': ['tslint', 'eslint'],
-      \ 'typescript': ['tslint', 'eslint'],
-      \ 'typescript.tsx': ['tslint', 'eslint'],
-      \ 'typescriptreact': ['tslint', 'eslint'],
+      \ 'javascript': ['prettier', 'eslint'],
+      \ 'javascript.jsx': ['prettier', 'eslint'],
+      \ 'typescript': ['prettier', 'tslint'],
+      \ 'typescript.tsx': ['prettier', 'tslint'],
+      \ 'typescriptreact': ['prettier', 'tslint'],
       \ 'less': ['prettier'],
       \ 'css': ['prettier'],
       \ 'scss': ['prettier'],
@@ -73,8 +74,8 @@ Plug 'w0rp/ale'
       \ }
 
   let g:ale_fixers = {
-      \ 'javascript': ['prettier', 'tslint'],
-      \ 'javascript.jsx': ['prettier', 'tslint'],
+      \ 'javascript': ['prettier', 'eslint'],
+      \ 'javascript.jsx': ['prettier', 'eslint'],
       \ 'typescript': ['prettier', 'tslint'],
       \ 'typescript.tsx': ['prettier', 'tslint'],
       \ 'typescriptreact': ['prettier', 'tslint']
