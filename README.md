@@ -17,6 +17,7 @@
 ## Setup
 
 1. Install NeoVim (If Linux, you need the app image) [here](https://github.com/neovim/neovim/wiki/Installing-Neovim)
+1. Install Literation Mono Powerline font [here](https://github.com/powerline/fonts)
 1. Install NVM [here](https://github.com/creationix/nvm)
 1. Install NVM Node and alias default
 1. Install Yarn [here](https://yarnpkg.com/en/docs/install#debian-stable)
