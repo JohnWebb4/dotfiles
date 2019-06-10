@@ -14,7 +14,7 @@
 - NeoVim
 - Zsh
 
-## Setup
+## General Setup
 
 1. Install NeoVim (If Linux, you need the app image) [here](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 1. Install Literation Mono Powerline font [here](https://github.com/powerline/fonts)
@@ -34,3 +34,12 @@
 1. `Gem environment` and ensure ruby is in path
 1. If Linux, install clipboard tool (xclip)
 1. Run :checkhealth and address issues
+
+## Linux Setup
+
+1. Terminator CLI [here](https://gnometerminator.blogspot.com/p/introduction.html)
+
+## Mac Setup
+
+1. Install ITerm CLI [here](https://www.iterm2.com/)
+1. Install Spectacle [here](https://www.spectacleapp.com/)
