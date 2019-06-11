@@ -123,7 +123,7 @@ nnoremap <C-i> :%s/"/'/g<Cr> <bar> :noh<Cr>
 nnoremap <leader>r :edit<cr>
 
 nnoremap <C-t> :terminal<Cr>
-tnoremap <leader>k <C-\><C-n>
+tnoremap <Esc> <C-\><C-n>
 
 " buffer nav shortcuts
 nnoremap <leader>b :ls<CR>

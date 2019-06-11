@@ -115,6 +115,10 @@ else
   if [ -f '/Users/john.webb/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/john.webb/google-cloud-sdk/completion.zsh.inc'; fi
 fi
 
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/john.webb/.sdkman"
+[[ -s "/Users/john.webb/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/john.webb/.sdkman/bin/sdkman-init.sh"
+
 # Cleanup
 # Unset OS name
 unset unameOut
