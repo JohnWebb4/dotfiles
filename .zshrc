@@ -101,6 +101,9 @@ fi
 unset __conda_setup
 # <<< conda init <<<
 
+# Use brew python, if available
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
 # FZF Shit
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,.npm,.nvm,.Trash,node_modules,*/__snapshots__}/*" 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

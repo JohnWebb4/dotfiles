@@ -163,6 +163,9 @@ fi
 unset __conda_setup
 # <<< conda init <<<
 
+# Add brew python to path
+PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
 # Cleanup
 # Unset OS name
 unset unameOut
