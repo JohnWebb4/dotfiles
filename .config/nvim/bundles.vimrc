@@ -42,7 +42,7 @@ Plug 'junegunn/fzf.vim'
 "  =========================================
 "     Denite
 "  =========================================
-Plug 'neoclide/coc.nvim', {'tag': 'master', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'neoclide/coc-denite'
 
 Plug 'Shougo/denite.nvim'
