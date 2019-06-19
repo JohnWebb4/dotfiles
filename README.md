@@ -16,6 +16,8 @@
 
 ## General Setup
 
+1. Install iTerm for Mac and Terminator for Linux
+1. Set terminal theme to Firewatch for Mac, and Gruvbox Dark for Linux
 1. Install NeoVim (If Linux, you need the app image) [here](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 1. Install Droid Sans Mono Powerline font [here](https://github.com/powerline/fonts)
 1. Install NVM [here](https://github.com/creationix/nvm)
