@@ -158,7 +158,7 @@ if(s:uname == "Linux\n")
   set termguicolors
 
   set background=dark
-  colorscheme base16-tomorrow-night
+  colorscheme base16-monokai
 else
   set t_Co=256
   set termguicolors
