@@ -60,7 +60,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 Plug 'w0rp/ale'
   let g:ale_lint_on_text_changed = 'always'
-  let g:ale_fix_on_save = 1
+  let g:ale_fix_on_save = 0
   let g:ale_linters = {
       \ 'javascript': ['prettier', 'eslint'],
       \ 'javascript.jsx': ['prettier', 'eslint'],
