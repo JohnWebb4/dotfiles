@@ -1,0 +1,22 @@
+#! /bin/bash
+
+if [ -z "$1" ]; then
+  echo "You must specify a search path"
+
+  exit 1
+fi
+
+find_daemons() {
+  result=$(launchctl list | grep "$1" | awk '{print $3}')
+  result="$result $(sudo launchctl list | grep "$1" | awk '{print $3}')"
+
+  echo "$result"
+}
+
+daemons=$(find_daemons "$1")
+
+while read -r daemon; do
+  echo "Killing $daemon"
+  launchctl remove "$daemon"
+  sudo launchctl remove "$daemon"
+done <<< "$daemons"
