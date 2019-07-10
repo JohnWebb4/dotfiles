@@ -1,3 +1,11 @@
 #!/bin/bash
 
-kill $(ps aux | grep "$1" | awk '{print $2}')
+if [ -z "$1" ]; then
+  echo "You must specify a term to search for."
+  exit 1
+fi
+
+echo "Killing all processes that match '$1'"
+
+
+# kill $(ps aux | grep "$1" | awk '{print $2}')
