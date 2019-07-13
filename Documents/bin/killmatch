@@ -8,4 +8,4 @@ fi
 echo "Killing all processes that match '$1'"
 
 
-# kill $(ps aux | grep "$1" | awk '{print $2}')
+kill $(ps aux | grep "$1" | awk '{print $2}')
