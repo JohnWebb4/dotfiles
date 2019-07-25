@@ -20,3 +20,5 @@ while read -r daemon; do
   launchctl remove "$daemon"
   sudo launchctl remove "$daemon"
 done <<< "$daemons"
+
+exit 0
