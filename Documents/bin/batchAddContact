@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+
+if [ -z ${1} ]; then
+    echo 'You must specify a number of contacts to make'
+    exit 1
+fi
+
+if [ $1 > 1000 ]; then
+    echo 'Sorry I can only add up to 1000 contacts at a time'
+    exit 1
+fi
+
+if [ -z ${2} ]; then
+    echo 'You must specify an app ID'
+    exit 1
+fi
+if [ -z ${3} ]; then
+    echo 'You must specify a JWT'
+    exit 1
+fi
+
+total=$1
+appID=$2
+jwt=$3
+count=0
+
+echo "Adding $total contacts to $appID"
+
+for firstName in 'Arnold' 'Bobby' 'Cody' 'Derik' 'Eric' 'Fred' 'Guy' 'Harold' 'Ian' 'John' 'Kan' 'Lo' 'Man' 'Newb' 'Opus' 'Pete' 'Quen' 'Rich' 'Steve' 'Ted' 'Uve' 'Vundebar' 'Wes' 'Xane' 'Yan' 'Zebra' 'Arthur' 'Bruce' 'Chris' 'Dude' 'Edward'
+do
+  for lastName in 'Abe' 'Beer' 'Copper' 'Dude' 'Ethan' 'Frank' 'Greg' 'Hanz' 'Iog' 'Jest' 'Kurst' 'Ludewick' 'Maron' 'Noel' 'Olga' 'Peter' 'Quen' 'Reese' 'Stan' 'Tex' 'Usef' 'Vex' 'Wifef' 'Xizel' 'Yanz' 'Zeus' 'Amis' 'Bro' 'Can' 'Dog' 'Edgar'
+  do
+
+    if ((count >= total)); then
+      exit 0
+    fi
+
+    echo "Adding '$firstName' '$lastName'"
+    echo ''
+    curl -X POST \
+      "https://$appID.infusionsoft.com/app/rest/contacts" \
+      -H 'Accept: */*' \
+      -H "Authorization: Bearer $jwt" \
+      -H 'Content-Type: application/json' \
+      -H "Host: $appID.infusionsoft.com" \
+      -d '{
+    "email_addresses": [
+        {
+            "email": "'"$firstName"'@'"$lastName"'.com",
+            "field": "EMAIL1"
+        }
+    ],
+    "given_name": "'"$firstName"'",
+    "family_name": "'"$lastName"'"
+}'
+
+    echo ''
+    echo "Added $count: $firstName $lastName $firstName@$lastName.com"
+
+    sleep 0.5s
+
+    count=$((count + 1))
+  done
+done
+
+
+
+echo 'Done adding contacts'
+exit 0
