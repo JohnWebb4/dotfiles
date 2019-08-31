@@ -18,6 +18,9 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # Bash
 export PATH="$PATH:$HOME//Documents/bin"
 
+# Google Depot Tools (V8)
+export PATH="$PATH:/usr/local/share/depot_tools"
+
 if [[ $unameOut == 'Linux' ]]; then
   # Ruby
   export PATH="$PATH://home/john/.gem/ruby/2.6.0/bin"

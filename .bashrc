@@ -146,6 +146,9 @@ export PATH="$PATH://home/john/Documents/bin"
 # Ruby
 export PATH="$PATH://home/john/.gem/ruby/2.6.0/bin"
 
+# Google Depot Tools (V8)
+export PATH="$PATH:/usr/local/share/depot_tools"
+
 # added by Anaconda3 2018.12 installer
 # >>> conda init >>>
 # !! Contents within this block are managed by 'conda init' !!
