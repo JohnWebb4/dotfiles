@@ -11,17 +11,7 @@ let s:uname = system("uname -s")
 "  =========================================
 "     Colorschemes
 "  =========================================
-Plug 'felipesousa/rupza'
-Plug 'AlessandroYorba/Arcadia'
-Plug 'AlessandroYorba/Sierra'
-Plug 'reedes/vim-colors-pencil'
-Plug 'phanviet/Sidonia'
-Plug 'Zabanaa/neuromancer.vim'
-Plug 'KeitaNakamura/neodark.vim'
 Plug 'nightsense/snow'
-Plug 'andreypopp/vim-colors-plain'
-Plug 'kaicataldo/material.vim'
-Plug 'chriskempson/base16-vim'
 
 
 "  =========================================
@@ -42,9 +32,6 @@ Plug 'junegunn/fzf.vim'
 "  =========================================
 "     Denite
 "  =========================================
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-Plug 'neoclide/coc-denite'
-
 Plug 'Shougo/denite.nvim'
 Plug 'chemzqm/denite-git'
 
@@ -55,8 +42,6 @@ Plug 'chemzqm/denite-git'
 Plug 'tpope/vim-commentary'
 
 Plug 'tpope/vim-surround'
-
-Plug 'AndrewRadev/splitjoin.vim'
 
 Plug 'w0rp/ale'
   let g:ale_lint_on_text_changed = 'always'
@@ -85,8 +70,6 @@ Plug 'w0rp/ale'
   let g:ale_typescript_tslint_executable = 'tslint'
   let g:ale_typescript_tslint_config_path = 'tslint.json'
 
-Plug 'plasticboy/vim-markdown'
-
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
   let g:prettier#config#semi = 'true'
   let g:prettier#config#jsx_bracket_same_line = 'false'
@@ -97,8 +80,6 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install' }
   let g:prettier#exec_cmd_async = 1
   let g:prettier#config#parser = 'typescript'
 
-Plug 'metakirby5/codi.vim'
-
 "  =========================================
 "     External tools intergration plugins
 "  =========================================
@@ -106,6 +87,10 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'airblade/vim-gitgutter'
 
+"  =========================================
+"     Languages
+"  =========================================
+Plug 'sheerun/vim-polyglot'
 
 "  =========================================
 "     Javascript
@@ -149,13 +134,6 @@ Plug 'posva/vim-vue'
 
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
 
-
-"  =========================================
-"     Lua
-"  =========================================
-Plug 'tbastos/vim-lua'
-
-
 "  =========================================
 "     YAML
 "  =========================================
@@ -185,8 +163,6 @@ Plug 'roman/golden-ratio'
 Plug 'itchyny/lightline.vim'
 
 Plug 'maximbaz/lightline-ale'
-
-Plug 'vimwiki/vimwiki'
 
 Plug 'JamshedVesuna/vim-markdown-preview'
   let vim_markdown_preview_github=1

@@ -22,11 +22,7 @@ set tabstop=2         " actual tab uses 8 spaces
 
 set mouse=a           " click tabs, drag tabs, and drag split bars
 
-if(s:uname == "Linux\n")
-  set clipboard+=unnamedplus " yank and paste with the system clipboard
-else
-  set clipboard=unnamed " yank and paste with the system clipboard
-endif
+set clipboard+=unnamedplus " yank and paste with the system clipboard
 
 set directory-=.      " don't store swapfiles in the current directory
 set list              " show trailing whitespace
@@ -190,9 +186,3 @@ endif
 " FZF Config
 " ===============================================================================
 source $HOME/.config/nvim/fzf.vim
-
-
-" ===============================================================================
-" Coc config
-" ===============================================================================
-source $HOME/.config/nvim/coc.vim
