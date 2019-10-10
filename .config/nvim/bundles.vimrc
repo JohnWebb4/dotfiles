@@ -47,6 +47,9 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 
 Plug 'w0rp/ale'
+  if(s:uname == "Linux\n")
+    let g:ale_linters_explicit = 1
+  endif
   let g:ale_lint_on_text_changed = 'always'
   let g:ale_fix_on_save = 0
   let g:ale_linters = {

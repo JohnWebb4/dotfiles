@@ -149,24 +149,18 @@ if(s:uname == "Linux\n")
   if(has("nvim"))
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   endif
-
-  set t_Co=256
-  set termguicolors
-
-  set background=dark
-  colorscheme base16-monokai
-else
-  set t_Co=256
-  set termguicolors
-
-  " Dark mode
-  set background=dark
-  colorscheme snow
-
-  " Light mode
-  " set background=light
-  " colorscheme plain
 endif
+
+set t_Co=256
+set termguicolors
+
+" Dark mode
+set background=dark
+colorscheme snow
+
+" Light mode
+" set background=light
+" colorscheme plain
 
 syntax on
 
