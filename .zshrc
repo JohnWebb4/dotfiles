@@ -83,9 +83,9 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # added by Anaconda3 2018.12 installer
 # >>> conda init >>>
@@ -121,10 +121,10 @@ else
   if [ -f '/Users/john.webb/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/john.webb/google-cloud-sdk/completion.zsh.inc'; fi
 fi
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/john.webb/.sdkman"
-[[ -s "/Users/john.webb/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/john.webb/.sdkman/bin/sdkman-init.sh"
-
 # Cleanup
 # Unset OS name
 unset unameOut
+
+# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+# export SDKMAN_DIR="/Users/john.webb/.sdkman"
+# [[ -s "/Users/john.webb/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/john.webb/.sdkman/bin/sdkman-init.sh"

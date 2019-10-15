@@ -5,11 +5,6 @@ unameOut="$(uname -s)"
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-if [ -n "$HOME/.local/share/emsdk" ] ; then
-    # Include Web assembly emcc command
-    source "$HOME/.local/share/emsdk/emsdk_env.sh" --build=Release
-fi
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -133,9 +128,9 @@ if [[ $unameOut == 'Linux' ]]; then
 
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # GO
 export PATH="$PATH:/usr/local/go/bin"
