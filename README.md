@@ -16,12 +16,9 @@
 
 ## General Setup
 
-1. Install iTerm for Mac and Terminator for Linux
 1. Set terminal theme to Firewatch for Mac, and Gruvbox Dark for Linux
 1. Install NeoVim (If Linux, you need the app image) [here](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 1. Install Droid Sans Mono Powerline font [here](https://github.com/powerline/fonts)
-1. Install NVM [here](https://github.com/creationix/nvm)
-1. Install NVM Node and alias default
 1. Install Yarn [here](https://yarnpkg.com/en/docs/install#debian-stable)
 1. Install FZF using Git [here](https://github.com/junegunn/fzf#using-git)
 1. Install Ag Searcher [here](https://github.com/ggreer/the_silver_searcher)
@@ -37,11 +34,6 @@
 1. If Linux, install clipboard tool (xclip)
 1. Run :checkhealth and address issues
 
-## Linux Setup
-
-1. Terminator CLI [here](https://gnometerminator.blogspot.com/p/introduction.html)
-
 ## Mac Setup
 
-1. Install ITerm CLI [here](https://www.iterm2.com/)
 1. Install Spectacle [here](https://www.spectacleapp.com/)
