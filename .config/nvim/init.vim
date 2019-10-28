@@ -151,8 +151,9 @@ if(s:uname == "Linux\n")
   endif
 endif
 
-set t_Co=256
-set termguicolors
+" Disable for Mac OS terminal
+" set t_Co=256
+" set termguicolors
 
 " Dark mode
 set background=dark
