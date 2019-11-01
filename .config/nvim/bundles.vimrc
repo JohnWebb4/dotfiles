@@ -145,25 +145,6 @@ Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
 "  =========================================
 Plug 'mrk21/yaml-vim'
 
-"  =========================================
-"     Interface improvement
-"  =========================================
-Plug 'scrooloose/nerdtree'
-  let g:NERDTreeMinimalUI = 1 " not so much cruft
-  let g:NERDTreeShowHidden = 1 " Should hidden files
-  let g:NERDTreeShowLineNumbers = 1
-  let g:NERDTreeIgnore=['\.DS_Store']
-  let g:NERDTreeShowBookmarks = 1
-  hi def link NERDTreeRO Normal
-  hi def link NERDTreePart StatusLine
-  hi def link NERDTreeDirSlash Directory
-  hi def link NERDTreeCurrentNode Search
-  hi def link NERDTreeCWD Normal
-
-Plug 'jistr/vim-nerdtree-tabs'
-  nnoremap <leader>d :NERDTreeTabsToggle<CR>
-  nnoremap <leader>D :NERDTreeTabsFind<CR>
-
 Plug 'roman/golden-ratio'
 
 Plug 'itchyny/lightline.vim'
