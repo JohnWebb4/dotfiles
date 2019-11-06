@@ -156,8 +156,8 @@ endif
 " set termguicolors
 
 " Dark mode
-set background=dark
-colorscheme snow
+" set background=dark
+colorscheme elflord
 
 " Light mode
 " set background=light
