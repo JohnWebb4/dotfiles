@@ -46,7 +46,7 @@ let g:lightline#ale#indicator_warnings = "\uf071 WARNING"
 let g:lightline#ale#indicator_errors = "\uf05e ERROR"
 let g:lightline#ale#indicator_ok = "\uf00c OK"
 
-let g:lightline.colorscheme = 'snow_dark'
+let g:lightline.colorscheme = 'wombat'
 
 function! LightlineFugitive()
   if exists('*fugitive#head')
