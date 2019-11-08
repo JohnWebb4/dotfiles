@@ -157,7 +157,7 @@ endif
 
 " Dark mode
 " set background=dark
-colorscheme pablo
+colorscheme elflord
 
 " Light mode
 " set background=light
