@@ -125,7 +125,7 @@ if [[ $unameOut == 'Linux' ]]; then
     # Configure vim to use App image
     alias nvim=/usr/local/share/nvim/nvim.appimage
     alias sudo="sudo "
-
+    alias open=$HOME/Documents/bin/open
 fi
 
 # export NVM_DIR="$HOME/.nvm"
