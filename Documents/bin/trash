@@ -2,11 +2,43 @@
 # Get OS
 unameOut="$(uname -s)"
 
-if [[ $unameOut == 'Linux' ]]; then
-  mv "$@" ~/.config/Trash
-else
-  mv "$@" ~/.Trash
-fi
+function getDestPath {
+  trash=$1
+  basename=$2
+  num=$3
+  ext=$4
 
-# Cleanup
-unset unameOut
+  [[ $num > 0 ]] && is_greater_than_zero=1
+
+  dest_path="${trash}/${basename}${is_greater_than_zero:+$num}${ext:+$ext}"
+  echo $dest_path
+}
+
+# Iterate over arguments
+for path in "$@"
+do
+  # Compute filename parts
+  file=$(basename $path)
+  basename=${file%.*}
+  ext=${file#"$basename"}
+
+  # Set trash directory
+  if [[ $unameOut == 'Linux' ]]; then
+    trash=~/.config/Trash
+  else
+    trash=~/.Trash
+  fi
+
+  # Handle collisions in trash
+  num=0
+  dest_path=$(getDestPath $trash $basename $num $ext)
+  while [[ -e "$dest_path" ]]
+  do
+    (( num++ ))
+    dest_path=$(getDestPath $trash $basename $num $ext)
+  done
+
+  # Move to trash
+  mv $path $dest_path
+  echo "Moved to $dest_path";
+done
