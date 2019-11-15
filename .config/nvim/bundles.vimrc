@@ -57,9 +57,9 @@ Plug 'w0rp/ale'
   let g:ale_linters = {
       \ 'javascript': ['prettier', 'eslint'],
       \ 'javascript.jsx': ['prettier', 'eslint'],
-      \ 'typescript': ['prettier', 'tslint'],
-      \ 'typescript.tsx': ['prettier', 'tslint'],
-      \ 'typescriptreact': ['prettier', 'tslint'],
+      \ 'typescript': ['prettier', 'eslint'],
+      \ 'typescript.tsx': ['prettier', 'eslint'],
+      \ 'typescriptreact': ['prettier', 'eslint'],
       \ 'less': ['prettier'],
       \ 'css': ['prettier'],
       \ 'scss': ['prettier'],
@@ -69,14 +69,12 @@ Plug 'w0rp/ale'
   let g:ale_fixers = {
       \ 'javascript': ['prettier', 'eslint'],
       \ 'javascript.jsx': ['prettier', 'eslint'],
-      \ 'typescript': ['prettier', 'tslint'],
-      \ 'typescript.tsx': ['prettier', 'tslint'],
-      \ 'typescriptreact': ['prettier', 'tslint']
+      \ 'typescript': ['prettier', 'eslint'],
+      \ 'typescript.tsx': ['prettier', 'eslint'],
+      \ 'typescriptreact': ['prettier', 'eslint']
       \ }
 
   let g:ale_typescript_tslint_use_global = 0
-  let g:ale_typescript_tslint_executable = 'tslint'
-  let g:ale_typescript_tslint_config_path = 'tslint.json'
 
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
   let g:prettier#config#semi = 'true'
