@@ -13,6 +13,15 @@ find_daemons() {
   echo "$result"
 }
 
+# Echo a silly chant
+chants[0]='Into the light.'
+chants[1]='Fuz ro dah!'
+chants[2]='Jackpot!'
+chants[3]="You're pretty good."
+chants[4]="I know what you're thinking. \"Did he fire six shots or only five?\""
+rand=$[ $RANDOM % 5 ]
+echo ${chants[$rand]}
+
 daemons=$(find_daemons "$1")
 
 while read -r daemon; do
