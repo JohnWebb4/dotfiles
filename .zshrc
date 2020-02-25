@@ -21,6 +21,9 @@ export PATH="$PATH:$HOME//Documents/bin"
 # Google Depot Tools (V8)
 export PATH="$PATH:/usr/local/share/depot_tools"
 
+# Maven
+export PATH="$PATH:$HOME/maven/bin"
+
 if [[ $unameOut == 'Linux' ]]; then
   # Ruby
   export PATH="$PATH://home/john/.gem/ruby/2.6.0/bin"
@@ -31,7 +34,6 @@ else
   export PATH="$PATH:/Users/john.webb/kotlinc/bin"
   export PATH="$PATH:/Library/Ruby/Gems/2.3.0"
   export PATH="$PATH:/Users/john.webb/.gem/ruby/2.3.0"
-  export PATH="$PATH:/Users/john.webb/maven/bin"
 fi
 
 # ZSH Config folder
