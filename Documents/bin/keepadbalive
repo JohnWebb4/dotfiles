@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+cat << EOF
+###########################################################
+# Workaround adb disconnecting issue on macOS Sierra
+#
+# More info:
+# https://code.google.com/p/android/issues/detail?id=219085
+# credits to: hans...@meetme.com, vs...@google.com
+###########################################################
+
+EOF
+
+function each_device() {
+  DEVICES=( $(adb devices | tail -n +2 | cut -sf 1) )
+
+  for DEVICE in ${DEVICES[@]}
+  do
+    adb -s ${DEVICE} $@
+  done
+}
+
+function monitor_adb () {
+  adb start-server
+  echo "[$(date)] adb started"
+
+  while [ "$(each_device shell echo 1)" ]; do sleep 5; done
+
+  echo "[$(date)] adb is broken, restarting"
+
+  adb kill-server
+  adb start-server || adb start-server
+  each_device reverse
+}
+
+while [ true ]; do time monitor_adb ; done
