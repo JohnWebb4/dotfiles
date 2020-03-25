@@ -11,6 +11,9 @@ cat << EOF
 
 EOF
 
+CONSECUTIVE_BROKEN_COUNT=0
+MAX_BROKEN_COUNT=10
+
 function each_device() {
   DEVICES=( $(adb devices | tail -n +2 | cut -sf 1) )
 
@@ -24,13 +27,18 @@ function monitor_adb () {
   adb start-server
   echo "[$(date)] adb started"
 
-  while [ "$(each_device shell echo 1)" ]; do sleep 5; done
+  while [ "$(each_device shell echo 1)" ]; do
+    sleep 5;
+    CONSECUTIVE_BROKEN_COUNT=0
+  done
 
-  echo "[$(date)] adb is broken, restarting"
+  echo "[$(date)] adb is broken, restarting, try $CONSECUTIVE_BROKEN_COUNT"
 
   adb kill-server
   adb start-server || adb start-server
   each_device reverse
+
+  CONSECUTIVE_BROKEN_COUNT=$((CONSECUTIVE_BROKEN_COUNT+1))
 }
 
-while [ true ]; do time monitor_adb ; done
+while [ "$CONSECUTIVE_BROKEN_COUNT" -lt "$MAX_BROKEN_COUNT" ]; do time monitor_adb ; done

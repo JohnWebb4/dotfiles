@@ -157,11 +157,11 @@ endif
 
 " Dark mode
 " set background=dark
-colorscheme Black
+" colorscheme Black
 
 " Light mode
 " set background=light
-" colorscheme plain
+colorscheme Tomorrow
 
 syntax on
 
