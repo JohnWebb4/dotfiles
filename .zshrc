@@ -34,6 +34,7 @@ else
   export PATH="$PATH:/Users/john.webb/kotlinc/bin"
   export PATH="$PATH:/Library/Ruby/Gems/2.3.0"
   export PATH="$PATH:/Users/john.webb/.gem/ruby/2.3.0"
+  export PATH="$PATH:/Users/john.webb/emsdk:/Users/john.webb/emsdk/node/12.9.1_64bit/bin:/Users/john.webb/emsdk/upstream/emscripten"
 fi
 
 # ZSH Config folder
