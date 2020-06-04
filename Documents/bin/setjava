@@ -1,0 +1,10 @@
+VERSION="$1"
+
+if [ -z "$VERSION" ]; then
+  echo 'Please pass a version';
+  /usr/libexec/java_home -V
+else
+  export JAVA_HOME=`/usr/libexec/java_home -v "$VERSION"`;
+  echo "Set Java version to $VERSION"
+fi
+
