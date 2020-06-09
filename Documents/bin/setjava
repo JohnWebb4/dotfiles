@@ -5,6 +5,6 @@ if [ -z "$VERSION" ]; then
   /usr/libexec/java_home -V
 else
   export JAVA_HOME=`/usr/libexec/java_home -v "$VERSION"`;
-  echo "Set Java version to $VERSION"
+  echo "Set Java home to $JAVA_HOME"
 fi
 
