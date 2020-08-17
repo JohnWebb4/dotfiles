@@ -37,3 +37,12 @@
 ## Mac Setup
 
 1. Install Spectacle [here](https://www.spectacleapp.com/)
+
+## C++ Setup
+
+1. GCC
+1. CMake
+
+## Rust Web Assembly Setup
+1. [Wabt](https://github.com/WebAssembly/wabt)
+1. [Binaryen](https://github.com/WebAssembly/binaryen)

@@ -1,0 +1,100 @@
+#! /usr/bin/env bash
+
+# Set any global variables here
+
+# Get OS name
+unameOut="$(uname -s)"
+
+# Append folder path to variable
+# Throw error if missing path
+checkAndAppendPath() {
+  varName=$1
+  folderPath=$2
+
+  if ! [ -z ${varName} ] && ! [ -z ${folderPath} ]; then
+    if [[ -d "$folderPath" ]]; then
+      currentVal="${(P)varName}"
+      if [ -z $currentVal ]; then
+        export "$varName=$folderPath"
+      else
+        # Technically could potentially set the first value twice, if done in a right after each other.
+        if [[ $currentVal == *"$folderPath:"* ]]; then
+          echo "Already set $folderPath = `echo $currentVal | grep $folderPath`"
+        else
+          export "$varName=${(P)varName}:$folderPath"
+        fi
+
+      fi
+    else
+      echo "Folder does not exist: $folderPath"
+    fi
+  fi
+}
+
+# If Linux return value, otherwise default
+ifLinux() {
+  linuxValue=$1
+  defaultValue=$2
+
+  if [[ unameOut == 'Linux' ]]; then
+    echo "$linuxValue"
+  else
+    echo "$defaultValue"
+  fi
+}
+
+# All PATH Variables
+# If you come from bash you might have to change your $PATH.
+# checkAndAppendPath 'PATH' "$HOME/bin"
+# checkAndAppendPath 'PATH' '/usr/local/bin'
+
+# # Yarn
+# checkAndAppendPath 'PATH' "$HOME/.yarn/bin"
+checkAndAppendPath 'PATH' "$HOME/.config/yarn/global/node_modules/.bin"
+
+# # Google Depot Tools (V8)
+checkAndAppendPath 'PATH' '/usr/local/share/depot_tools'
+
+# # Maven
+checkAndAppendPath 'PATH' "$HOME/maven/bin"
+
+# # Ruby
+checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.gem/ruby/2.6.0/bin' '/Library/Ruby/Gems/2.3.0')"
+checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/.gem/ruby/2.3.0')"
+
+# # Kotlin
+# checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/kotlinc/bin')"
+
+# # Web assembly
+checkAndAppendPath 'PATH' "$(ifLinux '//home/john/.local/share/emsdk' '/Users/john.webb/emsdk')"
+checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/share/emsdk/clang/e1.38.25_64bit' '/Users/john.webb/emsdk/node/12.9.1_64bit/bin')"
+checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/share/emsdk/node/8.9.1_64bit/bin' '/Users/john.webb/emsdk/upstream/emscripten')"
+checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/share/emsdk/emscripten/1.38.25' '')"
+
+# # Rust
+# checkAndAppendPath 'PATH' "$HOME/.cargo/bin"
+
+# # Use brew python, if available
+checkAndAppendPath 'PATH' '/usr/local/opt/python/libexec/bin'
+
+# # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+checkAndAppendPath 'PATH' "$HOME/.rvm/bin"
+
+# # My Bash Scripts
+checkAndAppendPath 'PATH' "$HOME//Documents/bin"
+
+# # ZSH Config folder
+unset ZSH
+checkAndAppendPath 'ZSH' "$HOME/.oh-my-zsh"
+
+# # Android Platform tools
+# # Android Home
+checkAndAppendPath 'ANDROID_HOME' "$(ifLinux '/home/john/Android/Sdk' '/Users/john.webb/Library/Android/sdk')"
+checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/Library/Android/sdk/platform-tools')"
+
+# # FZF
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,.npm,.nvm,.Trash,node_modules,*/__snapshots__}/*" 2> /dev/null'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+
+unset unameOut

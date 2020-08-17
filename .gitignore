@@ -17,6 +17,7 @@
 !Documents/bin
 !Documents/bin/*
 !Documents/bin/*/*
+Documents/bin/externals/*
 
 !.gitignore
 
