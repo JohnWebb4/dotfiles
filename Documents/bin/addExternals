@@ -82,6 +82,8 @@ checkAndAppendPath 'PATH' "$HOME/.rvm/bin"
 
 # # My Bash Scripts
 checkAndAppendPath 'PATH' "$HOME//Documents/bin"
+checkAndAppendPath 'PATH' "$HOME//Documents/bin/externals/wabt/bin"
+checkAndAppendPath 'PATH' "$HOME//Documents/bin/externals/binaryen/bin"
 
 # # ZSH Config folder
 unset ZSH
