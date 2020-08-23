@@ -72,7 +72,7 @@ checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/share/emsdk/node/8.9.1_6
 checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/share/emsdk/emscripten/1.38.25' '')"
 
 # # Rust
-# checkAndAppendPath 'PATH' "$HOME/.cargo/bin"
+checkAndAppendPath 'PATH' "$HOME/.cargo/bin"
 
 # # Use brew python, if available
 checkAndAppendPath 'PATH' '/usr/local/opt/python/libexec/bin'
@@ -98,5 +98,3 @@ checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/Library/Android/sdk/pl
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,.npm,.nvm,.Trash,node_modules,*/__snapshots__}/*" 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
-
-unset unameOut
