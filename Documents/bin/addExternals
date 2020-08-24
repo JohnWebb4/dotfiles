@@ -72,7 +72,7 @@ checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/share/emsdk/node/8.9.1_6
 checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/share/emsdk/emscripten/1.38.25' '')"
 
 # # Rust
-checkAndAppendPath 'PATH' "$HOME/.cargo/bin"
+checkAndAppendPath 'PATH' "$(ifLinux \"$HOME/.cargo/bin\" '')"
 
 # # Use brew python, if available
 checkAndAppendPath 'PATH' '/usr/local/opt/python/libexec/bin'
