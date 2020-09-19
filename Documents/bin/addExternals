@@ -84,6 +84,7 @@ checkAndAppendPath 'PATH' "$HOME/.rvm/bin"
 checkAndAppendPath 'PATH' "$HOME//Documents/bin"
 checkAndAppendPath 'PATH' "$HOME//Documents/bin/externals/wabt/bin"
 checkAndAppendPath 'PATH' "$HOME//Documents/bin/externals/binaryen/bin"
+checkAndAppendPath 'PATH' "$HOME//Documents/bin/externals/skia"
 
 # # ZSH Config folder
 unset ZSH
