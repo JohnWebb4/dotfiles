@@ -186,4 +186,4 @@ source $HOME/.config/nvim/fzf.vim
 " ===============================================================================
 " Coc config
 " ===============================================================================
-source $HOME/.config/nvim/coc.vim
+" source $HOME/.config/nvim/coc.vim
