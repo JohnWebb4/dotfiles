@@ -27,7 +27,7 @@ Documents/bin/externals/*
 !nvim/*/*/*
 
 !.profile
-
 !.vimrc
-
 !.zshrc
+
+.DS_STORE
