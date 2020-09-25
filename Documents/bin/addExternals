@@ -78,7 +78,7 @@ checkAndAppendPath 'PATH' "$(ifLinux \"$HOME/.cargo/bin\" '')"
 checkAndAppendPath 'PATH' '/usr/local/opt/python/libexec/bin'
 
 # # Add python auxilliary libraries to path
-checkAndAppendPath 'PATH' "$HOME/.local/bin"
+checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/bin' '')"
 
 # # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 checkAndAppendPath 'PATH' "$HOME/.rvm/bin"
