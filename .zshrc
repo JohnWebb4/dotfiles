@@ -24,10 +24,8 @@ source "$ZSH/oh-my-zsh.sh"
 if [[ $unameOut == 'Linux' ]]; then
     # Configure vim to use App image
     if test -d '/usr/local/share/nvim/squashfs-root'; then
-        echo 'good'
         alias nvim=/usr/local/share/nvim/squashfs-root/AppRun
     else
-        echo 'bad'
         alias nvim=/usr/local/share/nvim/nvim.appimage
     fi
     alias sudo="sudo "
