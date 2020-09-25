@@ -1,5 +1,6 @@
 # Get OS name
 unameOut="$(uname -s)"
+test "$(</proc/sys/kernel/osrelease)" != "Microsoft" && isWSL="yes"
 
 source "$HOME/Documents/bin/addExternals"
 
@@ -22,7 +23,13 @@ source "$ZSH/oh-my-zsh.sh"
 # My addons
 if [[ $unameOut == 'Linux' ]]; then
     # Configure vim to use App image
-    alias nvim=/usr/local/share/nvim/nvim.appimage
+    if test -d '/usr/local/share/nvim/squashfs-root'; then
+        echo 'good'
+        alias nvim=/usr/local/share/nvim/squashfs-root/AppRun
+    else
+        echo 'bad'
+        alias nvim=/usr/local/share/nvim/nvim.appimage
+    fi
     alias sudo="sudo "
     alias open=$HOME/Documents/bin/open
 fi
