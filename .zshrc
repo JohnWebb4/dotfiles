@@ -1,6 +1,13 @@
 # Get OS name
 unameOut="$(uname -s)"
-test "$(</proc/sys/kernel/osrelease)" != "Microsoft" && isWSL="yes"
+
+if [[ $unameOut == 'Linux' ]]; then
+  isLinux='yes'
+fi
+
+if [[ $isLinux ]]; then
+  test "$(</proc/sys/kernel/osrelease)" != 'Microsoft' && isWSL='yes'
+fi
 
 source "$HOME/Documents/bin/addExternals"
 
@@ -21,7 +28,7 @@ plugins=(
 source "$ZSH/oh-my-zsh.sh"
 
 # My addons
-if [[ $unameOut == 'Linux' ]]; then
+if [ $isLinux ]; then
     # Configure vim to use App image
     if test -d '/usr/local/share/nvim/squashfs-root'; then
         alias nvim=/usr/local/share/nvim/squashfs-root/AppRun
@@ -55,7 +62,7 @@ fi
 unset __conda_setup
 # <<< conda init <<<
 
-if [[ $unameOut == 'Linux' ]]; then
+if [[ $isLinux ]]; then
 else
   # The next line updates PATH for the Google Cloud SDK.
   if [ -f '/Users/john.webb/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/john.webb/google-cloud-sdk/path.zsh.inc'; fi
