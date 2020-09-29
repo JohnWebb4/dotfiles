@@ -1,7 +1,7 @@
 "  =========================================
 "     Dependencies
 "  =========================================
-Plug 'tpope/vim-repeat'
+" Plug 'tpope/vim-repeat'
 
 "  =========================================
 "    Config Variables
@@ -26,16 +26,11 @@ else
 endif
 
 Plug 'junegunn/fzf.vim'
-  " nnoremap <leader>f :Files<Cr>
   nnoremap <leader>g :GFiles<Cr>
-  " nnoremap <leader>l :Lines<Cr>
-  " nnoremap <leader>a :Ag<Cr>
 
 "  =========================================
 "     Denite
 "  =========================================
-" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-" Plug 'neoclide/coc-denite'
 
 Plug 'Shougo/denite.nvim'
 Plug 'chemzqm/denite-git'
@@ -44,7 +39,6 @@ Plug 'chemzqm/denite-git'
 "  =========================================
 "     Language agnostic
 "  =========================================
-" Plug 'tpope/vim-commentary'
 
 Plug 'tpope/vim-surround'
 
@@ -93,68 +87,13 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'airblade/vim-gitgutter'
 
-"  =========================================
-"     Languages
-"  =========================================
 Plug 'sheerun/vim-polyglot'
-
-"  =========================================
-"     Javascript
-"  =========================================
-" Plug 'pangloss/vim-javascript', { 'for': [
-"       \ 'javascript',
-"       \ 'javascript.jsx',
-"       \ 'typescript',
-"       \ 'typescrip.tsx',
-"       \ 'typescriptreact'
-"       \ ] }
-" 
-" Plug 'vim-scripts/JavaScript-Indent', { 'for': [
-"       \ 'javascript',
-"       \ 'javascript.jsx',
-"       \ 'typescript',
-"       \ 'typescript.tsx',
-"       \ 'typescriptreact'
-"       \ ] }
-" 
-" Plug 'mxw/vim-jsx', { 'for': [
-"       \ 'javascript',
-"       \ 'javascript.jsx',
-"       \ 'typescript',
-"       \ 'typescript.tsx',
-"       \ 'typescriptreact'
-"       \ ] }
-"   let g:jsx_ext_required = 0
-" 
-" Plug 'HerringtonDarkholme/yats.vim', { 'for': [
-"       \ 'typescript',
-"       \ 'typescript.tsx',
-"       \ 'typescriptreact'
-"       \ ] }
-
-" Plug 'posva/vim-vue'
-
-"  =========================================
-"     HTML/CSS
-"  =========================================
-
-" Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
-
-"  =========================================
-"     YAML
-"  =========================================
-" Plug 'mrk21/yaml-vim'
 
 Plug 'roman/golden-ratio'
 
 Plug 'itchyny/lightline.vim'
 
 Plug 'maximbaz/lightline-ale'
-
-" Plug 'JamshedVesuna/vim-markdown-preview'
-"   let vim_markdown_preview_github=1
-
-" Plug 'jiangmiao/auto-pairs'
 
 Plug 'mgee/lightline-bufferline'
   nmap <Leader>1 <Plug>lightline#bufferline#go(1)
@@ -167,6 +106,3 @@ Plug 'mgee/lightline-bufferline'
   nmap <Leader>8 <Plug>lightline#bufferline#go(8)
   nmap <Leader>9 <Plug>lightline#bufferline#go(9)
   nmap <Leader>0 <Plug>lightline#bufferline#go(10)
-
-" Plug 'arithran/vim-delete-hidden-buffers'
-"   nnoremap <leader>v :DeleteHiddenBuffers<CR>
