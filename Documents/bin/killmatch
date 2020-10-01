@@ -7,5 +7,8 @@ fi
 
 echo "Killing all processes that match '$1'"
 
+matches=$(ps aux | grep "$1" | awk '{print $2}')
+echo "Found $matches"
 
-kill $(ps aux | grep "$1" | awk '{print $2}')
+kill $matches 
+sudo kill $matches
