@@ -7,8 +7,22 @@ fi
 
 echo "Killing all processes that match '$1'"
 
-matches=$(ps aux | grep "$1" | awk '{print $2}')
-echo "Found $matches"
+matches=$(ps aux | grep "$1" | grep -Ev 'killmatch|grep')
+printf "Found:\n$matches\n\n"
 
-kill $matches 
-sudo kill $matches
+pids=$(echo $matches | awk '{print $2}')
+while IFS= read -r pid; do
+  {
+    echo "Killing process: $pid"
+    {
+      echo 'Using user'
+      kill $pid
+    } || {
+      echo 'Failed with user. Using sudo'
+      sudo kill $pid
+    }
+  } || {
+    echo "Failed to kill process: $pid"
+  }
+done <<< "$pids"
+
