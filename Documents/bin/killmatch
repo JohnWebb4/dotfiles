@@ -1,28 +1,35 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-  echo "You must specify a term to search for."
+  printf "You must specify a term to search for.\n"
   exit 1
 fi
 
-echo "Killing all processes that match '$1'"
+printf "Killing all processes that match '$1'.\n"
 
 matches=$(ps aux | grep "$1" | grep -Ev 'killmatch|grep')
-printf "Found:\n$matches\n\n"
+printf "Found:\n$matches\n"
 
-pids=$(echo $matches | awk '{print $2}')
+kill_pid() {
+  printf "Killing process: $pid from user $user.\n"
+  if [ $user == $USER ] && kill "$pid"; then
+    printf "Killed $pid using $USER\n"
+  elif sudo kill -9 "$pid"; then
+    printf "Killed $pid using root\n"
+  else
+    printf "Failed to kill $pid\n"
+  fi
+}
+
+pids=$(printf "$matches" | awk '{print $2}')
+users=($(printf "$matches" | awk '{print $1}'))
+
+i=0
 while IFS= read -r pid; do
-  {
-    echo "Killing process: $pid"
-    {
-      echo 'Using user'
-      kill $pid
-    } || {
-      echo 'Failed with user. Using sudo'
-      sudo kill $pid
-    }
-  } || {
-    echo "Failed to kill process: $pid"
-  }
-done <<< "$pids"
+  printf '\n'
+  user=${users[i]}
 
+  kill_pid "$pid" "$user"
+
+  i=$((i+1))
+done <<< "$pids"
