@@ -3,42 +3,46 @@
 unameOut="$(uname -s)"
 
 function getDestPath {
-  trash=$1
-  basename=$2
-  num=$3
-  ext=$4
+  trash="$1"
+  basename="$2"
+  num="$3"
+  ext="$4"
 
-  [[ $num > 0 ]] && is_greater_than_zero=1
+  if [[ "$num" > 0 ]]; then
+    dest_path="${trash}/${basename}${num:+$num}${ext:+$ext}"
+  else
+    dest_path="${trash}/${basename}${ext:+$ext}"
+  fi
 
-  dest_path="${trash}/${basename}${is_greater_than_zero:+$num}${ext:+$ext}"
-  echo $dest_path
+
+  echo "$dest_path"
 }
 
 # Iterate over arguments
 for path in "$@"
 do
   # Compute filename parts
-  file=$(basename $path)
+  file=$(basename "$path")
   basename=${file%.*}
   ext=${file#"$basename"}
 
   # Set trash directory
   if [[ $unameOut == 'Linux' ]]; then
-    trash=~/.config/Trash
+    trash=~/.local/share/Trash
   else
     trash=~/.Trash
   fi
 
   # Handle collisions in trash
   num=0
-  dest_path=$(getDestPath $trash $basename $num $ext)
+  dest_path=$(getDestPath "$trash" "$basename" "$num" "$ext")
   while [[ -e "$dest_path" ]]
   do
     (( num++ ))
-    dest_path=$(getDestPath $trash $basename $num $ext)
+    dest_path=$(getDestPath "$trash" "$basename" "$num" "$ext")
   done
 
   # Move to trash
-  mv $path $dest_path
+  mv "$path" "$dest_path"
   echo "Moved to $dest_path";
 done
