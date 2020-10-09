@@ -12,7 +12,7 @@ printf "Found:\n$matches\n"
 
 kill_pid() {
   printf "Killing process: $pid from user $user.\n"
-  if [ $user == $USER ] && kill "$pid"; then
+  if [ $user == $USER ] && kill -9 "$pid"; then
     printf "Killed $pid using $USER\n"
   elif sudo kill -9 "$pid"; then
     printf "Killed $pid using root\n"
