@@ -30,11 +30,14 @@ source "$ZSH/oh-my-zsh.sh"
 # My addons
 if [ $isLinux ]; then
     # Configure vim to use App image
-    if test -d '/usr/local/share/nvim/squashfs-root'; then
-        alias nvim=/usr/local/share/nvim/squashfs-root/AppRun
-    else
-        alias nvim=/usr/local/share/nvim/nvim.appimage
+    if test -d '/usr/local/share/nvim'; then
+	if test -d '/usr/local/share/nvim/squashfs-root'; then
+            alias nvim=/usr/local/share/nvim/squashfs-root/AppRun
+        else
+            alias nvim=/usr/local/share/nvim/nvim.appimage
+        fi
     fi
+    
     alias sudo="sudo "
     alias open=$HOME/Documents/bin/open
 fi
