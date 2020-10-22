@@ -1,3 +1,20 @@
 #!/usr/bin/env bash
+unameOut="$(uname -s)"
 
-xdg-open $@
+if [[ $unameOut == 'Linux' ]]; then
+  isLinux='yes'
+fi
+
+if [[ $isLinux ]]; then
+  test "$(</proc/sys/kernel/osrelease)" != 'Microsoft' && isWSL='yes'
+fi
+
+if [ $isLinux ]; then
+  if [ $isWSL ]; then
+    cmd.exe /C start $@
+  else
+    xdg-open $@
+  fi
+else
+  /usr/bin/open $@
+fi
