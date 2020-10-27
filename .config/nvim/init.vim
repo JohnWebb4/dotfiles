@@ -161,7 +161,7 @@ endif
 
 " Light mode
 " set background=light
-colorscheme Tomorrow
+" colorscheme Tomorrow
 
 syntax on
 
