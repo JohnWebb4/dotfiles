@@ -6,7 +6,13 @@ if [[ $unameOut == 'Linux' ]]; then
 fi
 
 if [[ $isLinux ]]; then
-  test "$(</proc/sys/kernel/osrelease)" != 'Microsoft' && isWSL='yes'
+  osrelease="$(</proc/sys/kernel/osrelease)"
+
+  if [[ "$osrelease"  == *'Microsoft'* ]]; then
+    isWSL='yes'
+  else
+    unset isWSL
+  fi
 fi
 
 if [ $isLinux ]; then
