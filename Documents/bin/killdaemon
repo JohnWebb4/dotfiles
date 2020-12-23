@@ -17,9 +17,10 @@ find_daemons() {
 chants[0]='Into the light.'
 chants[1]='Fuz ro dah!'
 chants[2]='Jackpot!'
-chants[3]="You're pretty good."
-chants[4]="I know what you're thinking. \"Did he fire six shots or only five?\""
-rand=$[ $RANDOM % 5 ]
+chants[3]="I know what you're thinking. \"Did he fire six shots or only five?\""
+chants[4]="hasta la vista. baby."
+chants[5]="yippee-ki-yay"
+rand=$[ $RANDOM % 6 ]
 echo ${chants[$rand]}
 
 daemons=$(find_daemons "$1")
