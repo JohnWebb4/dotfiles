@@ -1,0 +1,18 @@
+# Run with '. nvm'
+
+
+## Initialize if not
+if [ -z "$NVM_DIR" ]
+then
+  echo 'Initializing NVM'
+  echo 'Make sure you ran this as '\''. nvm'\'' so it isn'\''t initailized everytime.'
+
+  export NVM_DIR="$HOME/.nvm"
+  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+  nvm $@
+else
+  echo 'NVM already initialized. You should not see this.'
+fi
+
