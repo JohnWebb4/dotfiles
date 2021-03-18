@@ -12,9 +12,9 @@ let s:uname = system("uname -s")
 "     Colorschemes
 "  =========================================
 Plug 'flazz/vim-colorschemes'
-Plug 'felixhummel/setcolors.vim'
-nnoremap <Leader>= :call NextColor(1)<CR>
-nnoremap <Leader>- :call NextColor(-1)<CR>
+" Plug 'felixhummel/setcolors.vim'
+" nnoremap <Leader>= :call NextColor(1)<CR>
+" nnoremap <Leader>- :call NextColor(-1)<CR>
 
 "  =========================================
 "     FZF Goodness
