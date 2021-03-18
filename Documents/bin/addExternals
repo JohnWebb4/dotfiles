@@ -53,29 +53,29 @@ ifLinux() {
 checkAndAppendPath 'PATH' "$HOME/.config/yarn/global/node_modules/.bin"
 
 # # Google Depot Tools (V8)
-checkAndAppendPath 'PATH' '/usr/local/share/depot_tools'
+# checkAndAppendPath 'PATH' '/usr/local/share/depot_tools'
 
 # # Maven
 checkAndAppendPath 'PATH' "$HOME/maven/bin"
 
 # # Ruby
-checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.gem/ruby/2.6.0/bin' '/Library/Ruby/Gems/2.3.0')"
+checkAndAppendPath 'PATH' "$(ifLinux '' '/Library/Ruby/Gems/2.3.0')"
 checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/.gem/ruby/2.3.0')"
 
 # # Kotlin
 # checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/kotlinc/bin')"
 
 # # Web assembly
-checkAndAppendPath 'PATH' "$(ifLinux '//home/john/.local/share/emsdk' '/Users/john.webb/emsdk')"
-checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/share/emsdk/clang/e1.38.25_64bit' '/Users/john.webb/emsdk/node/12.9.1_64bit/bin')"
-checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/share/emsdk/node/8.9.1_64bit/bin' '/Users/john.webb/emsdk/upstream/emscripten')"
-checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/share/emsdk/emscripten/1.38.25' '')"
+# checkAndAppendPath 'PATH' "$(ifLinux '//home/john/.local/share/emsdk' '/Users/john.webb/emsdk')"
+# checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/share/emsdk/clang/e1.38.25_64bit' '/Users/john.webb/emsdk/node/12.9.1_64bit/bin')"
+# checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/share/emsdk/node/8.9.1_64bit/bin' '/Users/john.webb/emsdk/upstream/emscripten')"
+# checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/share/emsdk/emscripten/1.38.25' '')"
 
 # # Rust
-checkAndAppendPath 'PATH' "$(ifLinux \"$HOME/.cargo/bin\" '')"
+# checkAndAppendPath 'PATH' "$(ifLinux \"$HOME/.cargo/bin\" '')"
 
 # # Use brew python, if available
-checkAndAppendPath 'PATH' '/usr/local/opt/python/libexec/bin'
+checkAndAppendPath 'PATH' "$(ifLinux '' '/usr/local/opt/python/libexec/bin')"
 
 # # Add python auxilliary libraries to path
 checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/bin' '')"
@@ -85,9 +85,9 @@ checkAndAppendPath 'PATH' "$HOME/.rvm/bin"
 
 # # My Bash Scripts
 checkAndAppendPath 'PATH' "$HOME//Documents/bin"
-checkAndAppendPath 'PATH' "$HOME//Documents/bin/externals/wabt/bin"
-checkAndAppendPath 'PATH' "$HOME//Documents/bin/externals/binaryen/bin"
-checkAndAppendPath 'PATH' "$HOME//Documents/bin/externals/skia"
+# checkAndAppendPath 'PATH' "$HOME//Documents/bin/externals/wabt/bin"
+# checkAndAppendPath 'PATH' "$HOME//Documents/bin/externals/binaryen/bin"
+# checkAndAppendPath 'PATH' "$HOME//Documents/bin/externals/skia"
 
 # # ZSH Config folder
 unset ZSH
