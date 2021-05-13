@@ -28,7 +28,7 @@ do
 
   # Set trash directory
   if [[ $unameOut == 'Linux' ]]; then
-    trash=~/.local/share/Trash
+    trash=~/.local/share/Trash/files
   else
     trash=~/.Trash
   fi
