@@ -100,3 +100,6 @@ checkAndAppendPath 'PATH' "$(ifLinux '/opt/gradle/gradle-6.7.1/bin' '')"
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,.npm,.nvm,.Trash,node_modules,*/__snapshots__}/*" 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# # Brew Node
+checkAndAppendPath 'PATH' "$(ifLinux '' '/usr/local/opt/node@12/bin')"
