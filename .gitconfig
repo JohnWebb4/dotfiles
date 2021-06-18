@@ -1,0 +1,9 @@
+[user]
+	name = John Webb
+	email = john.webb94@gmail.com
+[core]
+	editor = vim
+[push]
+	default = upstream
+[includeIf "gitdir:~/Documents/keap/"]
+	path = ~/Documents/keap/env.gitconfig
