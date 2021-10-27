@@ -16,7 +16,7 @@ if not success:
     sys.exit("Failed to open file")
 
 while success:
-    cv2.imwrite("frame%d.jpg" % count, image)
+    cv2.imwrite("image{:03d}.jpg".format(count), image)
     success, image = video.read()
 
     print("Completed frame ", count)

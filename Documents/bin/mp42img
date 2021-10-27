@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python /home/john/Documents/bin/python/mp42img.py $1
+python3 /home/john/Documents/bin/python/mp42img.py $1
