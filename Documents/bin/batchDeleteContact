@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+if [ -z ${1} ]; then
+    echo 'You must specify an app ID'
+    exit 1
+fi
+if [ -z ${2} ]; then
+    echo 'You must specify a JWT'
+    exit 1
+fi
+
+appID=$1
+jwt=$2
+count=0
+
+curl "https://$appID.infusionsoft.com/app/rest/contacts" -H "Authorization: Bearer $jwt"
+
+echo "hi $contacts"
+
+echo 'Done adding contacts'
+exit 0
