@@ -82,9 +82,7 @@ checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/bin' '')"
 
 # # My Bash Scripts
 checkAndAppendPath 'PATH' "$HOME//Documents/bin"
-# checkAndAppendPath 'PATH' "$HOME//Documents/bin/externals/wabt/bin"
-# checkAndAppendPath 'PATH' "$HOME//Documents/bin/externals/binaryen/bin"
-# checkAndAppendPath 'PATH' "$HOME//Documents/bin/externals/skia"
+checkAndAppendPath 'PATH' "$HOME//Documents/bin/externals"
 
 # # ZSH Config folder
 unset ZSH
@@ -108,3 +106,4 @@ export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # # Brew Node
 checkAndAppendPath 'PATH' "$(ifLinux '' '/usr/local/opt/node@12/bin')"
+
