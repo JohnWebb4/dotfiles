@@ -7,5 +7,5 @@
 	default = upstream
 [includeIf "gitdir:~/Documents/keap/"]
 	path = ~/Documents/keap/env.gitconfig
-[remote "origin"]
+[fetch]
 	prune = true
