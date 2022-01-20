@@ -1,6 +1,6 @@
 #! /usr/bin/env sh
 
-git fetch $@
+git fetch --all
 
 git for-each-ref --format '%(refname:short) %(upstream:track)' |
   awk '$2 == "[gone]" {print $1}' |
