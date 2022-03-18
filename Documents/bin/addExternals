@@ -74,6 +74,9 @@ checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/.gem/ruby/2.3.0')"
 # # Rust
 # checkAndAppendPath 'PATH' "$(ifLinux \"$HOME/.cargo/bin\" '')"
 
+# # Go
+checkAndAppendPath 'PATH' "$(ifLinux '/usr/local/go/bin' '')"
+
 # # Use brew python, if available
 checkAndAppendPath 'PATH' "$(ifLinux '' '/usr/local/opt/python/libexec/bin')"
 
