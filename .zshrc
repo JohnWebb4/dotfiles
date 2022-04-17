@@ -42,6 +42,9 @@ if [ $isLinux ]; then
     alias open=$HOME/Documents/bin/open
 fi
 
+# Google Cloud alias
+alias gcurl='curl -H "Authorization: Bearer $(gcloud auth print-identity-token)" -H "Content-Type: application/json"'
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # >>> conda initialize >>>
