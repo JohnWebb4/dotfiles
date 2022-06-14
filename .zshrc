@@ -75,6 +75,13 @@ fi
 # export SDKMAN_DIR="/Users/john.webb/.sdkman"
 # [[ -s "/Users/john.webb/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/john.webb/.sdkman/bin/sdkman-init.sh"
 
+# Setup NVM
+export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
 # Cleanup
 # Unset OS name
 unset unameOut
+eval "$(/usr/local/homebrew/bin/brew shellenv)"
+. "/usr/local/opt/asdf/asdf.sh"

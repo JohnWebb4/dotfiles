@@ -56,11 +56,11 @@ checkAndAppendPath 'PATH' "$HOME/.config/yarn/global/node_modules/.bin"
 # checkAndAppendPath 'PATH' '/usr/local/share/depot_tools'
 
 # # Maven
-checkAndAppendPath 'PATH' "$HOME/maven/bin"
+# checkAndAppendPath 'PATH' "$HOME/maven/bin"
 
 # # Ruby
-checkAndAppendPath 'PATH' "$(ifLinux '' '/Library/Ruby/Gems/2.3.0')"
-checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/.gem/ruby/2.3.0')"
+checkAndAppendPath 'PATH' "$(ifLinux '' '/Library/Ruby/Gems/2.6.0')"
+checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/.gem/ruby/2.6.0')"
 
 # # Kotlin
 # checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/kotlinc/bin')"
@@ -76,9 +76,6 @@ checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/.gem/ruby/2.3.0')"
 
 # # Go
 checkAndAppendPath 'PATH' "$(ifLinux '/usr/local/go/bin' '')"
-
-# # Use brew python, if available
-checkAndAppendPath 'PATH' "$(ifLinux '' '/usr/local/opt/python/libexec/bin')"
 
 # # Add python auxilliary libraries to path
 checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/bin' '')"
@@ -106,7 +103,3 @@ fi
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,.npm,.nvm,.Trash,node_modules,*/__snapshots__}/*" 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
-
-# # Brew Node
-checkAndAppendPath 'PATH' "$(ifLinux '' '/usr/local/opt/node@12/bin')"
-
