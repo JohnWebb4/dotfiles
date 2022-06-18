@@ -13,7 +13,6 @@ source "$HOME/Documents/bin/addExternals"
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
-# ZSH_THEME="spaceship"
 
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
@@ -71,17 +70,18 @@ else
   if [ -f '/Users/john.webb/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/john.webb/google-cloud-sdk/completion.zsh.inc'; fi
 fi
 
-# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-# export SDKMAN_DIR="/Users/john.webb/.sdkman"
-# [[ -s "/Users/john.webb/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/john.webb/.sdkman/bin/sdkman-init.sh"
-
+# Package managers
 # Setup NVM
 export NVM_DIR="$HOME/.nvm"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
+if [[ $isLinux ]]; then
+else
+  eval "$(/usr/local/homebrew/bin/brew shellenv)"
+  . "/usr/local/opt/asdf/asdf.sh"
+fi
+
 # Cleanup
 # Unset OS name
 unset unameOut
-eval "$(/usr/local/homebrew/bin/brew shellenv)"
-. "/usr/local/opt/asdf/asdf.sh"
