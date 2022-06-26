@@ -36,7 +36,7 @@ if [ $isLinux ]; then
             alias nvim=/usr/local/share/nvim/nvim.appimage
         fi
     fi
-    
+
     alias sudo="sudo "
     alias open=$HOME/Documents/bin/open
 fi
@@ -71,16 +71,16 @@ else
 fi
 
 # Package managers
-# Setup NVM
-export NVM_DIR="$HOME/.nvm"
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
 if [[ $isLinux ]]; then
 else
   eval "$(/usr/local/homebrew/bin/brew shellenv)"
   . "/usr/local/opt/asdf/asdf.sh"
 fi
+
+# Setup NVM
+export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Cleanup
 # Unset OS name
