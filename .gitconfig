@@ -1,6 +1,7 @@
 [user]
 	name = John Webb
 	email = john.webb94@gmail.com
+	signingkey = 00682ADDFB88021F
 [core]
 	editor = vim
 [push]
