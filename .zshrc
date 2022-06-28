@@ -77,6 +77,9 @@ else
   . "/usr/local/opt/asdf/asdf.sh"
 fi
 
+# Elixir
+export KERL_CONFIGURE_OPTIONS="--disable-silent-rules --enable-dynamic-ssl-lib --enable-shared-zlib --enable-smp-support --enable-threads --enable-wx --with-ssl=$(brew --prefix openssl@1.1) --without-javac --enable-kernel-poll --with-dynamic-trace=dtrace --enable-vm-probes --enable-darwin-64bit"
+
 # Setup NVM
 export NVM_DIR="$HOME/.nvm"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
