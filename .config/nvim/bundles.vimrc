@@ -21,12 +21,7 @@ Plug 'flazz/vim-colorschemes'
 "     FZF Goodness
 "  =========================================
 
-if(s:uname == "Linux\n")
-  Plug '~/.fzf'
-else
-  Plug '/usr/local/opt/fzf'
-endif
-
+Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
   nnoremap <leader>g :GFiles<Cr>
 
