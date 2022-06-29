@@ -12,14 +12,11 @@ main() {
 
   case "$arg" in
     '')
-      help
+      install
       ;;
     '--help')
       help
       exit 0
-      ;;
-    '--install')
-      install || exit 1
       ;;
     '--uninstall')
       uninstall || exit 1
@@ -29,7 +26,8 @@ main() {
 
 help() {
   echo "Setup script: $(ifLinux 'Linux' 'Mac')"
-  echo 'pass --install to install'
+  echo 'pass no arguments to install'
+  echo 'pass --help to see this message'
   echo 'pass --uninstall to uninstall'
 }
 
