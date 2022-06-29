@@ -1,12 +1,15 @@
 *
+.DS_STORE
 
 !.bashrc
+!.profile
+!.vimrc
+!.zshrc
 
-!colors
-!colors/*
-!colors/*/*
-!colors/*/*/*
-!colors/*/*/*/*
+!.gitignore
+!.gitconfig
+
+!install.sh
 
 !.config/
 !.config/nvim
@@ -18,17 +21,3 @@
 !Documents/bin/*
 !Documents/bin/*/*
 Documents/bin/externals/*
-
-!.gitignore
-!.gitconfig
-
-!nvim/
-!nvim/*
-!nvim/*/*
-!nvim/*/*/*
-
-!.profile
-!.vimrc
-!.zshrc
-
-.DS_STORE
