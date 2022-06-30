@@ -1,4 +1,4 @@
-#! /usr/bin/env sh
+#! /usr/bin/env bash
 
 # Get OS name
 unameOut="$(uname -s)"
@@ -6,6 +6,8 @@ unameOut="$(uname -s)"
 if [ "$unameOut" = 'Linux' ]; then
   isLinux='yes'
 fi
+
+
 
 main() {
   arg="$1"
@@ -16,10 +18,9 @@ main() {
       ;;
     '--help')
       help
-      exit 0
       ;;
     '--uninstall')
-      uninstall || exit 1
+      uninstall
       ;;
   esac
 }
@@ -32,7 +33,9 @@ help() {
 }
 
 install() {
-  echo 'Installing packages'
+  setup
+
+  printf "Installing packages\n\n"
 
   # Powerline
   printf 'Install Powerline Fonts [y/n]? '
@@ -54,8 +57,9 @@ install() {
     chsh -s /usr/local/bin/zsh
   fi
 
+
   # Oh My Zsh
-  if [ "$(ifAlreadyInstalled 'upgrade_oh_my_zsh')" ]; then
+  if [ -d "$HOME/.oh-my-zsh" ]; then
     echo 'Oh My Zsh already installed'
   else
     echo 'Manually install Oh My Zsh at (https://ohmyz.sh/)'
@@ -98,6 +102,15 @@ install() {
   # Yarn
   installPackage 'node' 'yarn' 'yarn'
 
+  # Go
+  if [ "$(ifAlreadyInstalled 'go')" ]; then
+    echo 'Go already installed'
+  else
+    echo 'Manually install Go (https://go.dev/dl/)'
+    echo 'Rerun to continue'
+    exit 1
+  fi
+
   # FZF
   installPackage 'native' 'fzf' 'fzf'
 
@@ -113,7 +126,20 @@ install() {
   else
     echo 'Skipping XClip installation'
   fi
+
+  printf '\n\nInstalling Done!!!!'
 }
+
+setup() {
+  # Setup NVM
+  if ! [ "$(ifAlreadyInstalled 'nvm')" ]; then
+    echo 'Setting up nvm'
+    export NVM_DIR="$HOME/.nvm"
+    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+  fi
+}
+
 
 uninstall() {
   echo 'Uninstalling packages'
@@ -179,13 +205,13 @@ ifAlreadyInstalled() {
   package_command="$1"
 
   if [ -n "$package_command" ]; then
-    if [ -n "$(command -v "$package_command")" ]; then
+    if [ "$(command -v "$package_command")"  ]; then
       echo true
-      return
-    else
-      echo false
+      return 0
     fi
   fi
+
+  return 1
 }
 
 
