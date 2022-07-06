@@ -51,12 +51,15 @@ install() {
     echo 'Skipping Powerline install'
   fi
 
+  if ! [ "$(ifLinux)" ]; then
+    checkCommandInstalled 'brew' 'https://brew.sh/'
+  fi
+
   # Zsh
   installPackage 'native' 'zsh' 'zsh'
   if [ "$SHELL" != '/bin/zsh' ]; then
     chsh -s /usr/local/bin/zsh
   fi
-
 
   # Oh My Zsh
   if [ -d "$HOME/.oh-my-zsh" ]; then
@@ -68,14 +71,7 @@ install() {
   fi
 
   # NVM
-  if [ "$(ifAlreadyInstalled 'nvm')" ]; then
-    echo 'NVM already installed'
-
-  else
-    echo 'Manually install NVM (https://github.com/nvm-sh/nvm)'
-    echo 'Rerun to continue'
-    exit 1
-  fi
+  checkCommandInstalled 'nvm' 'https://github.com/nvm-sh/nvm#installing-and-updating'
 
   if [ "$(ifAlreadyInstalled 'node')" ]; then
     echo 'Node already installed'
@@ -84,7 +80,7 @@ install() {
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
     echo 'Installing node'
-    nvm install lts
+    nvm install node
   fi
 
   # Neovim
@@ -102,14 +98,25 @@ install() {
   # Yarn
   installPackage 'node' 'yarn' 'yarn'
 
-  # Go
-  if [ "$(ifAlreadyInstalled 'go')" ]; then
-    echo 'Go already installed'
+  # React Native 
+  installPackage 'native' 'watchman' 'watchman'
+
+  # Java
+  if [ "$(ifAlreadyInstalled 'java')" ]; then
+    echo 'Java already installed'
   else
-    echo 'Manually install Go (https://go.dev/dl/)'
-    echo 'Rerun to continue'
-    exit 1
+    if [ "$isLinux" ]; then
+      echo 'TODO: Install Java Linux'
+      exit 1
+    else
+      echo 'Installing Java'
+      brew tap homebrew/cask-versions
+      brew install --cask zulu11
+    fi
   fi
+
+  # Go
+  checkCommandInstalled 'go' 'https://go.dev/'
 
   # FZF
   installPackage 'native' 'fzf' 'fzf'
@@ -125,6 +132,32 @@ install() {
     installPackage 'native' 'xclip' 'xclip'
   else
     echo 'Skipping XClip installation'
+  fi
+
+  ifAppInstalled 'Visual Studio Code' 'https://code.visualstudio.com/'
+
+  # VS Code
+  checkAppInstalled 'Visual Studio Code' 'https://code.visualstudio.com/'
+  checkCommandInstalled 'code' 'https://code.visualstudio.com/docs/editor/command-line'
+
+  # Spotify
+  checkAppInstalled 'Spotify' 'https://www.spotify.com/us/'
+
+  # Flipper
+  checkAppInstalled 'Flipper' 'https://fbflipper.com/'
+
+  # Android Studio
+  checkAppInstalled 'Android Studio' 'https://developer.android.com/studio'
+
+  # Spectacle
+  if ! [ "$isLinux" ]; then
+    checkAppInstalled 'Spectacle' 'https://www.spectacleapp.com/'
+  fi
+
+  # XCode/Cocoapods
+  if ! [ "$isLinux" ]; then
+    checkAppInstalled 'Xcode' 'https://apps.apple.com/us/app/xcode/id497799835?mt=12'
+    installPackage 'ruby' 'cocoapods' 'pod'
   fi
 
   printf '\n\nInstalling Done!!!!'
@@ -171,7 +204,12 @@ installPackage() {
       'node')
         echo "Installing node package $package"
 
-        npm install "$package"
+        npm install --global "$package"
+        ;;
+      'ruby')
+        echo "Installing ruby package $package"
+
+        gem install "$package"
         ;;
     esac
   fi
@@ -199,6 +237,38 @@ uninstallPackage() {
     echo "$package is already uninstalled"
     return
   fi
+}
+
+checkCommandInstalled() {
+  cli_command="$1"
+  url="$2"
+
+  if [ "$(ifAlreadyInstalled "$cli_command")" ]; then
+    echo "$cli_command already installed"
+  else
+    echo "Manually install $cli_command ($url)"
+    echo 'Rerun to continue'
+    exit 1
+  fi
+}
+
+checkAppInstalled() {
+  app_name="$1"
+  url="$2"
+
+  if [ "$(ifAppInstalled "$app_name")" ]; then
+      echo "$app_name already installed"
+  else
+    echo "Manually install $app_name ($url)"
+    echo 'Rerun to continue'
+    exit 1
+  fi
+}
+
+ifAppInstalled() {
+  app_name="$1"
+
+  [ -d "/Applications/$app_name.app" ] && echo "$app_name exists."
 }
 
 ifAlreadyInstalled() {

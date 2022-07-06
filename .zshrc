@@ -72,9 +72,6 @@ fi
 
 # Package managers
 if [[ $isLinux ]]; then
-else
-  eval "$(/usr/local/homebrew/bin/brew shellenv)"
-  . "/usr/local/opt/asdf/asdf.sh"
 fi
 
 # Elixir
@@ -91,3 +88,4 @@ export GPG_TTY=$(tty)
 # Cleanup
 # Unset OS name
 unset unameOut
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
