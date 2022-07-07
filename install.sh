@@ -154,6 +154,9 @@ install() {
     checkAppInstalled 'Spectacle' 'https://www.spectacleapp.com/'
   fi
 
+  # Postman
+  checkAppInstalled 'Postman' 'https://www.postman.com/'
+
   # XCode/Cocoapods
   if ! [ "$isLinux" ]; then
     checkAppInstalled 'Xcode' 'https://apps.apple.com/us/app/xcode/id497799835?mt=12'
