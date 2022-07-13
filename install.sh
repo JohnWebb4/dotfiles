@@ -51,14 +51,16 @@ install() {
     echo 'Skipping Powerline install'
   fi
 
-  if ! [ "$(ifLinux)" ]; then
+  if ! [ "$isLinux" ]; then
     checkCommandInstalled 'brew' 'https://brew.sh/'
   fi
 
   # Zsh
   installPackage 'native' 'zsh' 'zsh'
-  if [ "$SHELL" != '/bin/zsh' ]; then
-    chsh -s /usr/local/bin/zsh
+  ZSH_SHELL="$(ifLinux '/usr/bin/zsh' '/bin/zsh')"
+  echo "SHELL $ZSH_SHELL"
+  if [ "$SHELL" != "$ZSH_SHELL" ]; then
+    chsh -s "$ZSH_SHELL"
   fi
 
   # Oh My Zsh
@@ -106,8 +108,7 @@ install() {
     echo 'Java already installed'
   else
     if [ "$isLinux" ]; then
-      echo 'TODO: Install Java Linux'
-      exit 1
+      installPackage 'native' 'openjdk-11-jdk' 'java'
     else
       echo 'Installing Java'
       brew tap homebrew/cask-versions
@@ -197,7 +198,7 @@ installPackage() {
         if [ "$isLinux" ]; then
           echo "Installing for Linux $package"
 
-          apt install "$package"
+          sudo apt install "$package"
         else
           echo "Installing for Mac $package"
 
