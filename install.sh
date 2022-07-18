@@ -135,17 +135,15 @@ install() {
     echo 'Skipping XClip installation'
   fi
 
-  ifAppInstalled 'Visual Studio Code' 'https://code.visualstudio.com/'
-
   # VS Code
-  checkAppInstalled 'Visual Studio Code' 'https://code.visualstudio.com/'
+  checkAppInstalled "$(ifLinux 'code' 'Visual Studio Code')" 'https://code.visualstudio.com/'
   checkCommandInstalled 'code' 'https://code.visualstudio.com/docs/editor/command-line'
 
   # Spotify
-  checkAppInstalled 'Spotify' 'https://www.spotify.com/us/'
+  checkAppInstalled "$(ifLinux 'spotify' 'Spotify')" 'https://www.spotify.com/us/'
 
   # Flipper
-  checkAppInstalled 'Flipper' 'https://fbflipper.com/'
+  checkAppInstalled "$(ifLinu 'flipper' 'Flipper')" 'https://fbflipper.com/'
 
   # Android Studio
   checkAppInstalled 'Android Studio' 'https://developer.android.com/studio'
@@ -156,7 +154,7 @@ install() {
   fi
 
   # Postman
-  checkAppInstalled 'Postman' 'https://www.postman.com/'
+  checkAppInstalled "$(ifLinux 'postman' 'Postman')" 'https://www.postman.com/'
 
   # XCode/Cocoapods
   if ! [ "$isLinux" ]; then
@@ -272,7 +270,12 @@ checkAppInstalled() {
 ifAppInstalled() {
   app_name="$1"
 
-  [ -d "/Applications/$app_name.app" ] && echo "$app_name exists."
+  if [ "$isLinux" ]; then
+    [ -f "/usr/share/applications/$app_name.desktop" ] && echo "$app_name exists."
+    [ -d "/snap/$app_name" ] && echo "$app_name exists."
+  else
+    [ -d "/Applications/$app_name.app" ] && echo "$app_name exists."
+  fi
 }
 
 ifAlreadyInstalled() {
