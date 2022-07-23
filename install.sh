@@ -15,6 +15,7 @@ main() {
   case "$arg" in
     '')
       install
+      notes
       ;;
     '--help')
       help
@@ -143,10 +144,10 @@ install() {
   checkAppInstalled "$(ifLinux 'spotify' 'Spotify')" 'https://www.spotify.com/us/'
 
   # Flipper
-  checkAppInstalled "$(ifLinu 'flipper' 'Flipper')" 'https://fbflipper.com/'
+  checkAppInstalled "$(ifLinux 'flipper' 'Flipper')" 'https://fbflipper.com/'
 
   # Android Studio
-  checkAppInstalled 'Android Studio' 'https://developer.android.com/studio'
+  checkAppInstalled "$(ifLinux 'android-studio' 'Android Studio')" 'https://developer.android.com/studio'
 
   # Spectacle
   if ! [ "$isLinux" ]; then
@@ -162,7 +163,7 @@ install() {
     installPackage 'ruby' 'cocoapods' 'pod'
   fi
 
-  printf '\n\nInstalling Done!!!!'
+  printf '\n\nInstalling Done!!!!\n\n'
 }
 
 setup() {
@@ -172,6 +173,16 @@ setup() {
     export NVM_DIR="$HOME/.nvm"
     export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+  fi
+}
+
+notes() {
+  echo 'Notes: '
+
+  if [ "$isLinux" ]; then
+    echo "If you are still using the D-Link adapter, See link for updating driver config (https://ubuntuforums.org/archive/index.php/t-2442974.html)"
+  else
+    echo 'None'
   fi
 }
 
