@@ -136,6 +136,13 @@ install() {
     echo 'Skipping XClip installation'
   fi
 
+  # Gnome Tweaks
+  if [ "$isLinux" ]; then
+    installPackage 'native' 'gnome-tweaks' 'gnome-tweaks'
+  else
+    echo 'Gnome Tweaks installation'
+  fi
+
   # VS Code
   checkAppInstalled "$(ifLinux 'code' 'Visual Studio Code')" 'https://code.visualstudio.com/'
   checkCommandInstalled 'code' 'https://code.visualstudio.com/docs/editor/command-line'
