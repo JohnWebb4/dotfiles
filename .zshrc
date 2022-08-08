@@ -9,6 +9,11 @@ if [[ $isLinux ]]; then
   test "$(</proc/sys/kernel/osrelease)" != 'Microsoft' && isWSL='yes'
 fi
 
+# Fig pre block. Keep at the top of this file.
+if ! [[ $isLinux ]]; then
+  [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
+fi
+
 source "$HOME/Documents/bin/addExternals"
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -82,3 +87,8 @@ export GPG_TTY=$(tty)
 # Unset OS name
 unset unameOut
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+
+# Fig post block. Keep at the bottom of this file.
+if ! [[ $isLinux ]]; then
+  [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
+fi
