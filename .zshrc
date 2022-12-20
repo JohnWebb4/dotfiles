@@ -9,11 +9,6 @@ if [[ $isLinux ]]; then
   test "$(</proc/sys/kernel/osrelease)" != 'Microsoft' && isWSL='yes'
 fi
 
-# Fig pre block. Keep at the top of this file.
-if ! [[ $isLinux ]]; then
-  [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
-fi
-
 source "$HOME/Documents/bin/addExternals"
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -80,6 +75,11 @@ export NVM_DIR="$HOME/.nvm"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
+# Asdf ZSH
+if ! [[ $isLinux ]]; then
+  echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ${ZDOTDIR:-~}/.zshrc
+fi
+
 # GPG
 export GPG_TTY=$(tty)
 
@@ -88,7 +88,19 @@ export GPG_TTY=$(tty)
 unset unameOut
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
-# Fig post block. Keep at the bottom of this file.
+# Asdf post block.
 if ! [[ $isLinux ]]; then
-  [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
+  . /opt/homebrew/opt/asdf/libexec/asdf.sh
 fi
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh

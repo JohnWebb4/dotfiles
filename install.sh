@@ -148,6 +148,11 @@ install() {
     echo 'Gnome Tweaks installation'
   fi
 
+  # Rectangle
+  if ! [ "$isLinux" ]; then
+    installPackage 'native' 'rectangle'
+  fi
+
   # VS Code
   checkAppInstalled "$(ifLinux 'code' 'Visual Studio Code')" 'https://code.visualstudio.com/'
   checkCommandInstalled 'code' 'https://code.visualstudio.com/docs/editor/command-line'
@@ -160,11 +165,6 @@ install() {
 
   # Android Studio
   checkAppInstalled "$(ifLinux 'android-studio' 'Android Studio')" 'https://developer.android.com/studio'
-
-  # Spectacle
-  if ! [ "$isLinux" ]; then
-    checkAppInstalled 'Spectacle' 'https://www.spectacleapp.com/'
-  fi
 
   # Postman
   checkAppInstalled "$(ifLinux 'postman' 'Postman')" 'https://www.postman.com/'

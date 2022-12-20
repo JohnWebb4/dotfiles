@@ -6,11 +6,13 @@
 # Usage: raw_bundle.sh <target_line_number>
 #------------------------------------------------------------------------------
 
-TARGET_LINE=$1
-START_LINE=$((TARGET_LINE-4))
+TARGET_LINE=$((($1-0) > 1 ? $1-0 : 1))
+BUNDLE=$2
+START_LINE=$(((TARGET_LINE-4)>1 ? TARGET_LINE-4 : 1))
 LINE_COUNT=10
+END_LINE=$((START_LINE+LINE_COUNT))
 
-BUNDLE_OUTPUT=`curl -s http://localhost:8081/index.bundle\?platform\=ios\&dev\=true\&minify\=false | head -$START_LINE | tail -$LINE_COUNT`
+BUNDLE_OUTPUT=`curl -s "http://localhost:8081/index.bundle?platform=ios&dev=true&minify=false&modulesOnly=false&runModule=true&app=${BUNDLE}" | sed -n "${START_LINE},${END_LINE}p"`
 
 echo ""
 
