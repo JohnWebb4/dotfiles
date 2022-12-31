@@ -93,4 +93,3 @@ if ! [[ $isLinux ]]; then
   . /opt/homebrew/opt/asdf/libexec/asdf.sh
 fi
 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
