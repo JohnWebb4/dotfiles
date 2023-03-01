@@ -22,6 +22,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 plugins=(
   git
+  z
 )
 
 source "$ZSH/oh-my-zsh.sh"
