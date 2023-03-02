@@ -8,9 +8,7 @@ if (packageLocation == undefined) {
   throw new Error("Must specify a package.json path");
 }
 
-const packageString = fs
-  .readFileSync(packageLocation)
-  .toString();
+const packageString = fs.readFileSync(packageLocation).toString();
 const package = JSON.parse(packageString);
 
 const yarnLocation = process.argv[3];
@@ -19,17 +17,16 @@ if (yarnLocation == undefined) {
   throw new Error("Must specify a yarn.lock path");
 }
 
-
 const yarnLock = fs
   .readFileSync(yarnLocation)
   .toString()
   .split("\n\n")
   .map((dependency) => dependency.split("\n").map((l) => l.trim()));
 
-function fetchDependencyInfo(dependency) {
+function fetchDependencyInfo(dependency, version) {
   return new Promise((res, rej) => {
     const yarnDependencyIndex = yarnLock.findIndex((d) =>
-      d[0].startsWith(`"${dependency}@npm`),
+      d[0].startsWith(`"${dependency}@npm:${version}`)
     );
 
     if (yarnDependencyIndex >= 0) {
@@ -57,7 +54,7 @@ function fetchDependencyInfo(dependency) {
 
           const diffInDays = differenceInDays(
             latestPublishDate,
-            currentPublishDate,
+            currentPublishDate
           );
 
           res({
@@ -74,15 +71,15 @@ function fetchDependencyInfo(dependency) {
       });
     } else {
       rej(
-        new Error(`Failed to find dependency in yarn lock file: ${dependency}`),
+        new Error(`Failed to find dependency in yarn lock file: ${dependency}`)
       );
     }
   });
 }
 
-async function fetchAndFormatDependency(dependency) {
+async function fetchAndFormatDependency(dependency, version) {
   try {
-    dependencyInfo = await fetchDependencyInfo(dependency);
+    dependencyInfo = await fetchDependencyInfo(dependency, version);
 
     console.log(dependencyInfo);
 
@@ -107,7 +104,11 @@ async function run() {
     const batch = [];
 
     for (let j = 0; j < batchSize && i + j < dependencies.length; j++) {
-      batch.push(fetchAndFormatDependency(dependencies[i + j]));
+      const dependency = dependencies[i + j];
+
+      batch.push(
+        fetchAndFormatDependency(dependency, package.dependencies[dependency])
+      );
     }
 
     batchResult = await Promise.all(batch);
