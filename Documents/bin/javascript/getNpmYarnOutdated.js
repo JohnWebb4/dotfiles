@@ -26,7 +26,7 @@ const yarnLock = fs
 function fetchDependencyInfo(dependency, version) {
   return new Promise((res, rej) => {
     const yarnDependencyIndex = yarnLock.findIndex((d) =>
-      d[0].startsWith(`"${dependency}@npm:${version}`)
+      d[0].includes(`${dependency}@npm:${version}`)
     );
 
     if (yarnDependencyIndex >= 0) {
@@ -97,7 +97,8 @@ async function fetchAndFormatDependency(dependency, version) {
 async function run() {
   let dependenciesInfo = [];
 
-  const dependencies = Object.keys(package.dependencies);
+  let dependencies = Object.entries(package.dependencies);
+  dependencies = dependencies.concat(Object.entries(package.devDependencies));
 
   const batchSize = 5;
   for (let i = 0; i < dependencies.length; i += batchSize) {
@@ -106,9 +107,7 @@ async function run() {
     for (let j = 0; j < batchSize && i + j < dependencies.length; j++) {
       const dependency = dependencies[i + j];
 
-      batch.push(
-        fetchAndFormatDependency(dependency, package.dependencies[dependency])
-      );
+      batch.push(fetchAndFormatDependency(dependency[0], dependency[1]));
     }
 
     batchResult = await Promise.all(batch);
