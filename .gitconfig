@@ -1,13 +1,12 @@
 [user]
 	name = John Webb
 	email = john.webb94@gmail.com
-	signingkey = 00682ADDFB88021F
 [core]
 	editor = vim
 [push]
 	default = upstream
-[includeIf "gitdir:~/Documents/smartrent/"]
-	path = ~/Documents/smartrent/env.gitconfig
+[includeIf "gitdir:~/"]
+	path = ~/env.gitconfig
 [fetch]
 	prune = true
 [alias]
@@ -16,3 +15,5 @@
   ds  = diff --staged
 [init]
 	templateDir = /Users/john.webb/.git-template
+[commit]
+	gpgsign = true
