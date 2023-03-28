@@ -86,11 +86,6 @@ install() {
     nvm install node
   fi
 
-  # Fig
-  if ! [ "$isLinux" ]; then
-    installPackage 'native' 'fig' 'fig'
-  fi
-
   # Neovim
   if [ "$(ifAlreadyInstalled 'nvim')" ]; then
     echo 'neovim already installed'
