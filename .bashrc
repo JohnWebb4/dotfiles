@@ -49,3 +49,4 @@ unset color_prompt force_color_prompt
 
 # some more ls aliases
 alias l='ls -CF'
+. "$HOME/.cargo/env"

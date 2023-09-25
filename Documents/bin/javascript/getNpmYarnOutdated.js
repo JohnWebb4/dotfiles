@@ -94,12 +94,14 @@ async function fetchAndFormatDependency(dependency, version) {
   }
 }
 
-async function run() {
+async function main() {
   let dependenciesInfo = [];
 
+  // Read package.json and get list of dependencies
   let dependencies = Object.entries(package.dependencies);
   dependencies = dependencies.concat(Object.entries(package.devDependencies));
 
+  // Batch fetch dependency info from NPM
   const batchSize = 5;
   for (let i = 0; i < dependencies.length; i += batchSize) {
     const batch = [];
@@ -115,6 +117,7 @@ async function run() {
     dependenciesInfo = dependenciesInfo.concat(batchResult);
   }
 
+  // Sort dependencies
   dependenciesInfo.sort((d1, d2) => {
     if (isNaN(d1.diffInDays) && !isNaN(d2.diffInDays)) {
       return -1;
@@ -130,4 +133,4 @@ async function run() {
   fs.writeFileSync("./version.json", JSON.stringify(dependenciesInfo));
 }
 
-run();
+main();

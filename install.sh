@@ -120,6 +120,9 @@ install() {
   # Go
   checkCommandInstalled 'go' 'https://go.dev/'
 
+  # Rust
+  checkCommandInstalled 'rustup' 'https://www.rust-lang.org/'
+
   # FZF
   installPackage 'native' 'fzf' 'fzf'
 

@@ -17,3 +17,7 @@
 	templateDir = /Users/john.webb/.git-template
 [commit]
 	gpgsign = true
+[alias]
+  co  = checkout
+  cleanup = remote update --prune
+  ds  = diff --staged
