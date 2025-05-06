@@ -5,10 +5,6 @@ if [[ $unameOut == 'Linux' ]]; then
   isLinux='yes'
 fi
 
-if [[ $isLinux ]]; then
-  test "$(</proc/sys/kernel/osrelease)" != 'Microsoft' && isWSL='yes'
-fi
-
 source "$HOME/Documents/bin/addExternals"
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -26,21 +22,6 @@ plugins=(
 )
 
 source "$ZSH/oh-my-zsh.sh"
-
-# My addons
-if [ $isLinux ]; then
-    # Configure vim to use App image
-    if test -d '/usr/local/share/nvim'; then
-	if test -d '/usr/local/share/nvim/squashfs-root'; then
-            alias nvim=/usr/local/share/nvim/squashfs-root/AppRun
-        else
-            alias nvim=/usr/local/share/nvim/nvim.appimage
-        fi
-    fi
-
-    alias sudo="sudo "
-    alias open=$HOME/Documents/bin/open
-fi
 
 # Google Cloud alias
 alias gcurl='curl -H "Authorization: Bearer $(gcloud auth print-identity-token)" -H "Content-Type: application/json"'
@@ -72,20 +53,21 @@ else
 fi
 
 # Setup NVM
-export NVM_DIR="$HOME/.nvm"
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# export NVM_DIR="$HOME/.nvm"
+# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # GPG
 export GPG_TTY=$(tty)
 
+JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+
+# export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+# Asdf post block.
+if ! [[ $isLinux ]]; then
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+fi
+
 # Cleanup
 # Unset OS name
 unset unameOut
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-
-# Asdf post block.
-if ! [[ $isLinux ]]; then
-  . /opt/homebrew/opt/asdf/libexec/asdf.sh
-fi
-

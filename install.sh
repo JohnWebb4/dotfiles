@@ -96,7 +96,6 @@ install() {
     echo 'Manually install NeoVim Plug (https://github.com/junegunn/vim-plug)'
     echo 'Rerun to continue'
     exit 1
-  fi
 
   # Yarn
   installPackage 'node' 'yarn' 'yarn'

@@ -1,6 +1,6 @@
 [user]
 	name = John Webb
-	email = john.webb94@gmail.com
+	email = John.Webb94@gmail.com
 [core]
 	editor = vim
 [push]
@@ -21,3 +21,8 @@
   co  = checkout
   cleanup = remote update --prune
   ds  = diff --staged
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
