@@ -96,25 +96,26 @@ install() {
     echo 'Manually install NeoVim Plug (https://github.com/junegunn/vim-plug)'
     echo 'Rerun to continue'
     exit 1
+  fi
 
   # Yarn
   installPackage 'node' 'yarn' 'yarn'
 
-  # React Native 
-  installPackage 'native' 'watchman' 'watchman'
+  # # React Native 
+  # installPackage 'native' 'watchman' 'watchman'
 
-  # Java
-  if [ "$(ifAlreadyInstalled 'java')" ]; then
-    echo 'Java already installed'
-  else
-    if [ "$isLinux" ]; then
-      installPackage 'native' 'openjdk-11-jdk' 'java'
-    else
-      echo 'Installing Java'
-      brew tap homebrew/cask-versions
-      brew install --cask zulu11
-    fi
-  fi
+  # # Java
+  # if [ "$(ifAlreadyInstalled 'java')" ]; then
+  #   echo 'Java already installed'
+  # else
+  #   if [ "$isLinux" ]; then
+  #     installPackage 'native' 'openjdk-11-jdk' 'java'
+  #   else
+  #     echo 'Installing Java'
+  #     brew tap homebrew/cask-versions
+  #     brew install --cask zulu11
+  #   fi
+  # fi
 
   # Go
   checkCommandInstalled 'go' 'https://go.dev/'
@@ -157,20 +158,20 @@ install() {
   # Spotify
   checkAppInstalled "$(ifLinux 'spotify' 'Spotify')" 'https://www.spotify.com/us/'
 
-  # Flipper
-  checkAppInstalled "$(ifLinux 'flipper' 'Flipper')" 'https://fbflipper.com/'
+  # # Flipper
+  # checkAppInstalled "$(ifLinux 'flipper' 'Flipper')" 'https://fbflipper.com/'
 
-  # Android Studio
-  checkAppInstalled "$(ifLinux 'android-studio' 'Android Studio')" 'https://developer.android.com/studio'
+  # # Android Studio
+  # checkAppInstalled "$(ifLinux 'android-studio' 'Android Studio')" 'https://developer.android.com/studio'
 
   # Postman
   checkAppInstalled "$(ifLinux 'postman' 'Postman')" 'https://www.postman.com/'
 
   # XCode/Cocoapods
-  if ! [ "$isLinux" ]; then
-    checkAppInstalled 'Xcode' 'https://apps.apple.com/us/app/xcode/id497799835?mt=12'
-    installPackage 'ruby' 'cocoapods' 'pod'
-  fi
+  # if ! [ "$isLinux" ]; then
+  #   checkAppInstalled 'Xcode' 'https://apps.apple.com/us/app/xcode/id497799835?mt=12'
+  #   installPackage 'ruby' 'cocoapods' 'pod'
+  # fi
 
   printf '\n\nInstalling Done!!!!\n\n'
 }
@@ -179,7 +180,6 @@ setup() {
   # Setup NVM
   if ! [ "$(ifAlreadyInstalled 'nvm')" ]; then
     echo 'Setting up nvm'
-    export NVM_DIR="$HOME/.nvm"
     export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
   fi
