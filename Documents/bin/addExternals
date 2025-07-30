@@ -61,8 +61,8 @@ checkAndAppendPath 'PATH' "$HOME/.config/yarn/global/node_modules/.bin"
 # checkAndAppendPath 'PATH' "$HOME/maven/bin"
 
 # # Ruby
-checkAndAppendPath 'PATH' "$(ifLinux '' '/Library/Ruby/Gems/2.6.0')"
-checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/.gem/ruby/2.6.0')"
+# checkAndAppendPath 'PATH' "$(ifLinux '' '/Library/Ruby/Gems/2.6.0')"
+# checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/.gem/ruby/2.6.0')"
 
 # # Kotlin
 # checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/kotlinc/bin')"
@@ -87,7 +87,7 @@ checkAndAppendPath 'PATH' "$HOME//Documents/bin"
 checkAndAppendPath 'PATH' "$HOME//Documents/bin/externals"
 
 # Asdf
-checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/.asdf/shims')"
+# checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/.asdf/shims')"
 
 # # ZSH Config folder
 unset ZSH
@@ -95,8 +95,8 @@ checkAndAppendPath 'ZSH' "$HOME/.oh-my-zsh"
 
 # # Android Platform tools
 # # Android Home
-checkAndAppendPath 'ANDROID_HOME' "$(ifLinux '/home/john/Android/Sdk' '/Users/john.webb/Library/Android/sdk')"
-checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/Library/Android/sdk/platform-tools')"
+# checkAndAppendPath 'ANDROID_HOME' "$(ifLinux '/home/john/Android/Sdk' '/Users/john.webb/Library/Android/sdk')"
+# checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/Library/Android/sdk/platform-tools')"
 
 # # Gradle
 checkAndAppendPath 'PATH' "$(ifLinux '/opt/gradle/gradle-7.0.2/bin' '')"
