@@ -67,6 +67,9 @@ if ! [[ $isLinux ]]; then
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 fi
 
+# Fix less pager only updating the top half of the terminal on macbook
+export LESS=-R
+
 # Cleanup
 # Unset OS name
 unset unameOut
