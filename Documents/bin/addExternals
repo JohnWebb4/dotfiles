@@ -77,7 +77,7 @@ checkAndAppendPath 'PATH' "$HOME/.config/yarn/global/node_modules/.bin"
 # checkAndAppendPath 'PATH' "$(ifLinux \"$HOME/.cargo/bin\" '')"
 
 # # Go
-checkAndAppendPath 'PATH' "$(ifLinux '/usr/local/go/bin' '')"
+# checkAndAppendPath 'PATH' "$(ifLinux '/usr/local/go/bin' '')"
 
 # # Add python auxilliary libraries to path
 checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/bin' '')"
@@ -89,22 +89,10 @@ checkAndAppendPath 'PATH' "$HOME//Documents/bin/externals"
 # Asdf
 # checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/.asdf/shims')"
 
-# # ZSH Config folder
-unset ZSH
-checkAndAppendPath 'ZSH' "$HOME/.oh-my-zsh"
-
 # # Android Platform tools
 # # Android Home
-# checkAndAppendPath 'ANDROID_HOME' "$(ifLinux '/home/john/Android/Sdk' '/Users/john.webb/Library/Android/sdk')"
-# checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/Library/Android/sdk/platform-tools')"
+checkAndAppendPath 'ANDROID_HOME' "$(ifLinux '/home/john/Android/Sdk' '/Users/john.webb/Library/Android/sdk')"
+checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/Library/Android/sdk/platform-tools')"
 
 # # Gradle
 checkAndAppendPath 'PATH' "$(ifLinux '/opt/gradle/gradle-7.0.2/bin' '')"
-
-# # FZF
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,.npm,.nvm,.Trash,node_modules,*/__snapshots__}/*" 2> /dev/null'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
-
-# Elixir
-export 'KERL_CONFIGURE_OPTIONS'="$(ifLinux '' '--disable-silent-rules --enable-dynamic-ssl-lib --enable-shared-zlib --enable-smp-support --enable-threads --enable-wx --with-ssl=$(brew --prefix openssl@1.1) --without-javac --enable-kernel-poll --with-dynamic-trace=dtrace --enable-vm-probes --enable-darwin-64bit')"
