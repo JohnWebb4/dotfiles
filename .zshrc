@@ -50,9 +50,12 @@ export GPG_TTY=$(tty)
 
 # export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 # Asdf post block.
-if ! [[ $isLinux ]]; then
-  . /opt/homebrew/opt/asdf/libexec/asdf.sh
-fi
+# if ! [[ $isLinux ]]; then
+# . /opt/homebrew/opt/asdf/libexec/asdf.sh
+# fi
+
+# Fix less pager only updating the top half of the terminal on macbook
+export LESS=-R
 
 # # FZF
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,.npm,.nvm,.Trash,node_modules,*/__snapshots__}/*" 2> /dev/null'
