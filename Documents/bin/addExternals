@@ -87,12 +87,19 @@ checkAndAppendPath 'PATH' "$HOME//Documents/bin"
 checkAndAppendPath 'PATH' "$HOME//Documents/bin/externals"
 
 # Asdf
-# checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/.asdf/shims')"
+if [[ $ENABLE_ASDF ]]; then
+  echo 'Adding ASDF to path'
+  checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/.asdf/shims')"
+fi
 
 # # Android Platform tools
 # # Android Home
-checkAndAppendPath 'ANDROID_HOME' "$(ifLinux '/home/john/Android/Sdk' '/Users/john.webb/Library/Android/sdk')"
-checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/Library/Android/sdk/platform-tools')"
+if [[ ENABLE_REACT_NATIVE ]]; then
+  echo 'Adding Android studio to path'
+  checkAndAppendPath 'ANDROID_HOME' "$(ifLinux '/home/john/Android/Sdk' "$HOME/Library/Android/sdk")"
+  checkAndAppendPath 'PATH' "$(ifLinux '' "$ANDROID_HOME/platform-tools")"
+fi
+
 
 # # Gradle
 checkAndAppendPath 'PATH' "$(ifLinux '/opt/gradle/gradle-7.0.2/bin' '')"

@@ -5,6 +5,7 @@ if [[ $unameOut == 'Linux' ]]; then
   isLinux='yes'
 fi
 
+source $HOME/env.zshrc
 source "$HOME/Documents/bin/addExternals"
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -30,6 +31,9 @@ source "$ZSH/oh-my-zsh.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Neovimdiff
+alias nvimdiff="nvim -d"
+
 # if [[ $isLinux ]]; then
 # else
   # The next line updates PATH for the Google Cloud SDK.
@@ -46,13 +50,20 @@ source "$ZSH/oh-my-zsh.sh"
 # GPG
 export GPG_TTY=$(tty)
 
-# JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+if [[ $ENABLE_REACT_NATIVE ]]; then
+  echo 'Enabling React Native'
+  JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+  # export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+fi
 
-# export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-# Asdf post block.
-# if ! [[ $isLinux ]]; then
-# . /opt/homebrew/opt/asdf/libexec/asdf.sh
-# fi
+if [[ $ENABLE_ASDF ]]; then
+  echo 'Enabling ASDF'
+
+  # Asdf post block.
+  if ! [[ $isLinux ]]; then
+   . /opt/homebrew/opt/asdf/libexec/asdf.sh
+  fi
+fi
 
 # Fix less pager only updating the top half of the terminal on macbook
 export LESS=-R

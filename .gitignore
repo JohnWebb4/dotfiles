@@ -9,6 +9,9 @@
 !.gitignore
 !.gitconfig
 
+!sample.env.zshrc
+!sample.env.gitconfig
+
 !install.sh
 
 !.config/
