@@ -50,13 +50,13 @@ alias nvimdiff="nvim -d"
 # GPG
 export GPG_TTY=$(tty)
 
-if [[ $ENABLE_REACT_NATIVE ]]; then
+if [[ "$ENABLE_REACT_NATIVE" = true ]]; then
   echo 'Enabling React Native'
   JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
   # export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 fi
 
-if [[ $ENABLE_ASDF ]]; then
+if [[ "$ENABLE_ASDF" = true ]]; then
   echo 'Enabling ASDF'
 
   # Asdf post block.

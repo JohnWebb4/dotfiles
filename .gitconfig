@@ -9,18 +9,8 @@
 	path = ~/env.gitconfig
 [fetch]
 	prune = true
-[alias]
-  co  = checkout
-  cleanup = remote update --prune
-  ds  = diff --staged
-[init]
-	templateDir = /Users/john.webb/.git-template
 [commit]
 	gpgsign = true
-[alias]
-  co  = checkout
-  cleanup = remote update --prune
-  ds  = diff --staged
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true

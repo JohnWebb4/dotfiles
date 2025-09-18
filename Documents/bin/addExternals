@@ -87,14 +87,14 @@ checkAndAppendPath 'PATH' "$HOME//Documents/bin"
 checkAndAppendPath 'PATH' "$HOME//Documents/bin/externals"
 
 # Asdf
-if [[ $ENABLE_ASDF ]]; then
+if [[ "$ENABLE_ASDF" = true ]]; then
   echo 'Adding ASDF to path'
   checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/.asdf/shims')"
 fi
 
 # # Android Platform tools
 # # Android Home
-if [[ ENABLE_REACT_NATIVE ]]; then
+if [[ "$ENABLE_REACT_NATIVE" = true ]]; then
   echo 'Adding Android studio to path'
   checkAndAppendPath 'ANDROID_HOME' "$(ifLinux '/home/john/Android/Sdk' "$HOME/Library/Android/sdk")"
   checkAndAppendPath 'PATH' "$(ifLinux '' "$ANDROID_HOME/platform-tools")"
