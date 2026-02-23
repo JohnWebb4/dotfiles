@@ -24,3 +24,12 @@
 !Documents/bin/*
 !Documents/bin/*/*
 Documents/bin/externals/*
+
+!.cursor
+!.cursor/.gitignore
+!.cursor/rules/
+!.cursor/skills/
+!.cursor/prompts/
+!.cursor/settings.json
+!.cursor/config.json
+.cursor/projects/*
