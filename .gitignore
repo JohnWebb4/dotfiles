@@ -32,4 +32,3 @@ Documents/bin/externals/*
 !.cursor/prompts/
 !.cursor/settings.json
 !.cursor/config.json
-.cursor/projects/*
