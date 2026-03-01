@@ -1,5 +1,5 @@
 ---
-name: dev-workflow-create-pr
+name: dev-workflow-write-pr
 description: Create a GitHub pull request using the gh CLI. Analyzes changes from base branch, generates a description following the PR template (jira or GitHub issue, what, why, who), and creates the PR if one doesn't exist. Use when the user asks to create a PR, open a pull request, or submit changes for review.
 ---
 
@@ -15,30 +15,7 @@ Create a GitHub pull request with an auto-generated description that follows the
 
 ## Workflow
 
-### Step 1: Check for Existing PR
-
-```bash
-gh pr view --json number,url 2>/dev/null
-```
-
-**If PR exists**: Report the existing PR URL and ask if the user wants to update the description.
-
-### Step 2: Get Current Branch and Verify Remote
-
-```bash
-git branch --show-current
-git status
-```
-
-**If branch is `main` or `master`**: STOP and warn the user.
-
-**If changes are not pushed**: Push first:
-
-```bash
-git push -u origin HEAD
-```
-
-### Step 3: Determine Base Branch and Analyze Changes
+### Step 1: Analyze Changes
 
 The branch may have been created from `main` or from another feature branch. Determine the correct base branch:
 
@@ -84,30 +61,20 @@ git log main..HEAD --oneline
 git diff main...HEAD --stat
 ```
 
-### Step 4: Generate PR Description
+### Step 2: Generate PR Description
 
-Generate the PR description directly from the diff gathered in Step 3.
+Generate the PR description directly from the diff gathered in Step 1.
 
-**4a. Extract ticket or issue** from the branch name:
+**2a. Extract ticket or issue** from the branch name:
 
 - **Jira:** Pattern `[A-Z]+-\d+` (e.g. RNDCORE-12345, RETIRE-456). Link: RETIRE → `https://gustohq.atlassian.net/browse/TICKET`; else `https://internal.guideline.tools/jira/browse/TICKET`.
 - **GitHub:** Pattern `issue-(\d+)` or leading `(\d+)-`. Link: `https://github.com/[owner]/[repo]/issues/N` (use current repo if not in branch).
 
 If neither found, **ALWAYS use the AskQuestion tool:** Title "Ticket or Issue", options: Jira (specify), GitHub (specify URL or #N), Skip (placeholder). If skip: use `RND***-xxxx` for jira or omit issue line.
 
-**4b. Analyze changes** from the diff — what changed, why, who it impacts.
+**2b. Analyze changes** from the diff — what changed, why, who it impacts.
 
-**4c. Generate the `[[[...]]]` block.** Use **either** jira **or** issue (not both):
-
-Jira:
-```
-[[[
-**jira:** [TICKET-123](<jira-browse-url>)
-**what:** concise summary of changes
-**why:** business justification
-**who:** affected users/teams
-]]]
-```
+**2c. Generate the `[[[...]]]` block.** Use issue:
 
 GitHub:
 ```
@@ -167,13 +134,14 @@ RETIRE branch:
 ]]]
 ```
 
-### Step 5: Create the PR
+### Step 3: Create the PR
 
 The PR body must include the `[[[...]]]` block and a screenshot placeholder.
 
 ```bash
-gh pr create --title "<type>: <short description>" --body "$(cat <<'EOF'
-<[[[...]]] block from Step 4>
+echo "<type>: <short description>"
+echo "$(cat <<'EOF'
+<[[[...]]] block from Step 2>
 
 ---
 
@@ -191,51 +159,12 @@ EOF
 - `refactor:` for code restructuring
 - `chore:` for maintenance
 
-### Step 6: Report Success
-
-Get the PR URL and format it as a clickable markdown link:
-
-```bash
-PR_URL=$(gh pr view --json url --jq '.url')
-```
-
-Then output a message with the URL as a clickable markdown link:
-
-```
-PR created successfully! 🎉
-
-[View PR #<number>]($PR_URL)
-```
-
-Example output: "PR created successfully! 🎉\n\n[View PR #2640](https://github.com/guideline-app/mobile-app/pull/2640)"
-
-### Step 7: Offer to Start Review
-
-After reporting the clickable PR URL, **ALWAYS use the AskQuestion tool:**
-
-- Title: "Start PR Review?"
-- Question: "Would you like me to review the PR for code quality, security, and best practices?"
-- Options:
-  - id: "review", label: "Yes, review it"
-  - id: "done", label: "No, I'm done"
-
-Based on the response:
-
-- "review" → Use the `dev-workflow-review-pr` skill to perform a comprehensive code review
-- "done" → End the workflow
-
 ## Checklist
 
 ```
 PR Creation Progress:
-- [ ] Verified no existing PR
-- [ ] Confirmed changes are pushed
-- [ ] Determined correct base branch (may not be main)
 - [ ] Analyzed diff from base branch
 - [ ] Generated PR description with [[[...]]] block
-- [ ] Created PR with gh CLI
-- [ ] Reported PR URL as clickable markdown link
-- [ ] Offered to start PR review
 ```
 
 ## Edge Cases

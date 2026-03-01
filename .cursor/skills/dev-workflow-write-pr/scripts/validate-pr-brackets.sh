@@ -16,7 +16,7 @@ fi
 if ! echo "$command" | grep -qE '\[{3}' || ! echo "$command" | grep -qE '\]{3}'; then
 	cat >&2 <<-'EOF'
 
-	# [FAIL]: /dev-workflow-create-pr (@../SKILL.md)
+	# [FAIL]: /dev-workflow-write-pr (@../SKILL.md)
 	------------------------------------------
 	# [ERROR]: PR body missing required [[[ and ]]] brackets from template.
 	# [REASON]: Triple bracket blocks are parsed into our CHANGELOG. Omitting them is strictly disallowed.
