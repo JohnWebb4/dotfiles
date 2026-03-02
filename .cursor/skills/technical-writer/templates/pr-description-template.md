@@ -8,8 +8,8 @@ Use this structure for pull request descriptions. Keep each section concise (1â€
 
 **jira:** [TICKET-123](link)
 
-Use the ticket ID from the branch (e.g. `RETIRE-456`, `RNDCORE-11727`). Link format:
-- Branch starts with `RETIRE`: `https://gustohq.atlassian.net/browse/TICKET`
+Use the ticket ID from the branch (e.g. `LINK456`, `RNDCORE-11727`). Link format:
+- Branch starts with `RETIRE`: `https://company.atlassian.net/browse/TICKET`
 - Otherwise: `https://internal.guideline.tools/jira/browse/TICKET`
 
 **what:** One sentence or a short bullet list.

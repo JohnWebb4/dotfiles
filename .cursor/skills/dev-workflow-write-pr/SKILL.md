@@ -1,6 +1,6 @@
 ---
 name: dev-workflow-write-pr
-description: Create a GitHub pull request using the gh CLI. Analyzes changes from base branch, generates a description following the PR template (jira or GitHub issue, what, why, who), and creates the PR if one doesn't exist. Use when the user asks to create a PR, open a pull request, or submit changes for review.
+description: Write a GitHub pull request. Analyzes changes from base branch, generates a description following the PR template (jira or GitHub issue, what, why, who), and creates the PR if one doesn't exist.
 ---
 
 # Create Pull Request
@@ -67,7 +67,7 @@ Generate the PR description directly from the diff gathered in Step 1.
 
 **2a. Extract ticket or issue** from the branch name:
 
-- **Jira:** Pattern `[A-Z]+-\d+` (e.g. RNDCORE-12345, RETIRE-456). Link: RETIRE → `https://gustohq.atlassian.net/browse/TICKET`; else `https://internal.guideline.tools/jira/browse/TICKET`.
+- **Jira:** Pattern `[A-Z]+-\d+` (e.g. RNDCORE-12345, LINK456). Link: RETIRE → `https://company.atlassian.net/browse/TICKET`; else `https://internal.guideline.tools/jira/browse/TICKET`.
 - **GitHub:** Pattern `issue-(\d+)` or leading `(\d+)-`. Link: `https://github.com/[owner]/[repo]/issues/N` (use current repo if not in branch).
 
 If neither found, **ALWAYS use the AskQuestion tool:** Title "Ticket or Issue", options: Jira (specify), GitHub (specify URL or #N), Skip (placeholder). If skip: use `RND***-xxxx` for jira or omit issue line.
@@ -127,7 +127,7 @@ RETIRE branch:
 
 ```
 [[[
-**jira:** [RETIRE-456](https://gustohq.atlassian.net/browse/RETIRE-456)
+**jira:** [LINK456](https://company.atlassian.net/browse/LINK456)
 **what:** Remove unused `OldAuthenticator` class and related specs
 **why:** Dead code cleanup after migration to new auth system
 **who:** No user impact, internal cleanup
