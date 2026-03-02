@@ -32,3 +32,6 @@ Documents/bin/externals/*
 !.cursor/prompts/
 !.cursor/settings.json
 !.cursor/config.json
+
+!.github/
+!.github/pull_request_template.md
