@@ -130,7 +130,7 @@ Used when writing pull request descriptions (jira/what/why/who format). Can be c
 **PR description rules:**
 - Output only the **jira** / **what** / **why** / **who** block; no extra headers or preamble.
 - Keep each field concise (1–2 sentences; use bullets for "what" only when there are multiple distinct changes).
-- Use backticks for code references. Link format: RETIRE branches → `gustohq.atlassian.net`; others → `internal.guideline.tools/jira`.
+- Use backticks for code references. Link format: RETIRE branches → `company.atlassian.net`; others → `internal.guideline.tools/jira`.
 - Do not add indentation inside the block.
 
 | Type | Template |

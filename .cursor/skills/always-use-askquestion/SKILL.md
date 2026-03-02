@@ -466,8 +466,8 @@ AskQuestion({
     "id": "ticket",
     "prompt": "What Jira ticket would you like to start?",
     "options": [
-      {"id": "ticket", "label": "Specify a ticket number (e.g., RETIRE-123)"},
-      {"id": "unticketed", "label": "Unticketed work (use RETIRE-1908)"}
+      {"id": "ticket", "label": "Specify a ticket number (e.g., LINK123)"},
+      {"id": "unticketed", "label": "Unticketed work (use LINK1908)"}
     ]
   }]
 })

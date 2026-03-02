@@ -23,7 +23,7 @@ Ask: "What should I investigate?" — free text. Examples:
 Ask: "Any context I should know before starting?" — free text, optional. Examples:
 - "We're planning to refactor this area"
 - "Focus on hooks that query GraphQL"
-- "Related to ticket RETIRE-1874"
+- "Related to ticket LINK1874"
 
 ### 3. Known areas / entry points
 
