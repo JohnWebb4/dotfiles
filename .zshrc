@@ -56,15 +56,6 @@ if [[ "$ENABLE_REACT_NATIVE" = true ]]; then
   # export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 fi
 
-if [[ "$ENABLE_ASDF" = true ]]; then
-  echo 'Enabling ASDF'
-
-  # Asdf post block.
-  if ! [[ $isLinux ]]; then
-   . /opt/homebrew/opt/asdf/libexec/asdf.sh
-  fi
-fi
-
 # Fix less pager only updating the top half of the terminal on macbook
 export LESS=-R
 
