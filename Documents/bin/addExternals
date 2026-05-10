@@ -80,11 +80,12 @@ checkAndAppendPath 'PATH' "$HOME/.config/yarn/global/node_modules/.bin"
 # checkAndAppendPath 'PATH' "$(ifLinux '/usr/local/go/bin' '')"
 
 # # Add python auxilliary libraries to path
-checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/bin' '')"
+# # Add Claude code path
+checkAndAppendPath 'PATH' "$HOME/.local/bin"
 
 # # My Bash Scripts
-checkAndAppendPath 'PATH' "$HOME//Documents/bin"
-checkAndAppendPath 'PATH' "$HOME//Documents/bin/externals"
+checkAndAppendPath 'PATH' "$HOME/Documents/bin"
+checkAndAppendPath 'PATH' "$HOME/Documents/bin/externals"
 
 # Asdf
 if [[ "$ENABLE_ASDF" = true ]]; then
