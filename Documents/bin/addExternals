@@ -10,6 +10,8 @@ unameOut="$(uname -s)"
 checkAndAppendPath() {
   varName=$1
   folderPath=$2
+  shouldPrepend=$3
+  : "${shouldPrepend:=false}"
 
   if ! [ -z ${varName} ] && ! [ -z ${folderPath} ]; then
     if [[ -d "$folderPath" ]]; then
@@ -21,7 +23,11 @@ checkAndAppendPath() {
         if [[ $currentVal == *"$folderPath:"* ]]; then
           echo "Already set $folderPath = `echo $currentVal | grep $folderPath`"
         else
-          export "$varName=${(P)varName}:$folderPath"
+          if [[ "$shouldPrepend" = true ]]; then
+            export "$varName=$folderPath:${(P)varName}"
+          else
+            export "$varName=${(P)varName}:$folderPath"
+          fi
         fi
 
       fi
@@ -89,7 +95,7 @@ checkAndAppendPath 'PATH' "$HOME//Documents/bin/externals"
 # Asdf
 if [[ "$ENABLE_ASDF" = true ]]; then
   echo 'Adding ASDF to path'
-  checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/.asdf/shims')"
+  checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/.asdf/shims')" true
 fi
 
 # # Android Platform tools
