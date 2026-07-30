@@ -93,12 +93,6 @@ checkAndAppendPath 'PATH' "$HOME/.local/bin"
 checkAndAppendPath 'PATH' "$HOME/Documents/bin"
 checkAndAppendPath 'PATH' "$HOME/Documents/bin/externals"
 
-# Asdf
-if [[ "$ENABLE_ASDF" = true ]]; then
-  echo 'Adding ASDF to path'
-  checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/.asdf/shims')" true
-fi
-
 # # Android Platform tools
 # # Android Home
 if [[ "$ENABLE_REACT_NATIVE" = true ]]; then

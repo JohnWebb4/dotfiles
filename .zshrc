@@ -70,3 +70,6 @@ export 'KERL_CONFIGURE_OPTIONS'="$(ifLinux '' '--disable-silent-rules --enable-d
 # Cleanup
 # Unset OS name
 unset unameOut
+
+# Mise
+eval "$(mise activate zsh)"
