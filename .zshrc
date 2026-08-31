@@ -72,4 +72,7 @@ export 'KERL_CONFIGURE_OPTIONS'="$(ifLinux '' '--disable-silent-rules --enable-d
 unset unameOut
 
 # Mise
-eval "$(mise activate zsh)"
+if [[ $isLinux ]]; then
+else
+  eval "$(mise activate zsh)"
+fi
