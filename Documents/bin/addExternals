@@ -104,3 +104,6 @@ fi
 
 # # Gradle
 checkAndAppendPath 'PATH' "$(ifLinux '/opt/gradle/gradle-7.0.2/bin' '')"
+
+# # Mise
+checkAndAppendPath 'PATH' "$HOME/.local/share/mise/shims"

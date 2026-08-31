@@ -5,6 +5,7 @@
 !.profile
 !.vimrc
 !.zshrc
+!.tmux.conf
 
 !.gitignore
 !.gitconfig
