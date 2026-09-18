@@ -5,7 +5,7 @@
 	editor = vim
 [push]
 	default = upstream
-[includeIf "gitdir:~/"]
+[include]
 	path = ~/env.gitconfig
 [fetch]
 	prune = true
