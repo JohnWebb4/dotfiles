@@ -2,7 +2,7 @@
 	name = John Webb
 	email = John.Webb94@gmail.com
 [core]
-	editor = vim
+	editor = nvim
 [push]
 	default = upstream
 [includeIf "gitdir:~/"]

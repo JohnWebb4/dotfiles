@@ -8,6 +8,8 @@ Personal dotfiles, shell scripts, and Cursor AI skills. Repo root is `$HOME`;
 
 - **Linux** (Debian) (apt and optional xclip/gnome-tweaks on Linux)
 - **macOS** — install.sh branches on `main` (Homebrew).
+- **Windows** (native PowerShell, no WSL) — config-only port, see
+  [`windows/README.md`](windows/README.md).
 
 ## Contents
 
@@ -17,6 +19,7 @@ Personal dotfiles, shell scripts, and Cursor AI skills. Repo root is `$HOME`;
 | **Neovim** | `~/.config/nvim/` | `init.vim`, bundles, lightline, fzf. Expects [vim-plug](https://github.com/junegunn/vim-plug). |
 | **Scripts** | `~/Documents/bin/` | Small bash (and a few Node/Python) helpers: e.g. `trash`, `killmatch`, `setjava`, `open`, npm/yarn outdated checkers. Add to `PATH` if you want them global. |
 | **Cursor skills** | `~/.cursor/skills/`, `~/.cursor/skills-cursor/` | Agent skills (write-tickets, technical-writer, dev-workflow-write-pr, investigate-create-doc, worktree-manager, create-rule, update-cursor-settings, etc.). One `SKILL.md` per skill. |
+| **Windows** | `windows/` | PowerShell profile + setup notes (git config, env vars/PATH, Neovim). tmux and `Documents/bin/*` are not ported. |
 
 ## Includes
 

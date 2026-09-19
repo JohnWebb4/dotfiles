@@ -36,3 +36,6 @@ Documents/bin/externals/*
 
 !.github/
 !.github/pull_request_template.md
+
+!windows/
+!windows/*
