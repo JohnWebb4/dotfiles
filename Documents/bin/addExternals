@@ -75,7 +75,7 @@ checkAndAppendPath 'PATH' "$HOME/Documents/bin/externals"
 
 # # Android Platform tools
 if [[ "$ENABLE_REACT_NATIVE" = true ]]; then
-  echo 'Android Studio to path'
+  echo 'Adding Android Studio to path'
   if [[ -z "$ANDROID_HOME" ]]; then
     checkAndAppendPath 'ANDROID_HOME' "$(ifLinux '/home/john/Android/Sdk' "$HOME/Library/Android/sdk")"
   fi
