@@ -21,7 +21,7 @@ checkAndAppendPath() {
       else
         # Technically could potentially set the first value twice, if done in a right after each other.
         if [[ $currentVal == *"$folderPath:"* ]]; then
-          echo "Already set $folderPath = `echo $currentVal | grep $folderPath`"
+          #echo "Already set $folderPath = `echo $currentVal | grep $folderPath`"
         else
           if [[ "$shouldPrepend" = true ]]; then
             export "$varName=$folderPath:${(P)varName}"
@@ -32,6 +32,7 @@ checkAndAppendPath() {
 
       fi
     else
+      echo "$folderPath"
       echo "Folder does not exist: $folderPath"
     fi
   fi
@@ -50,15 +51,7 @@ ifLinux() {
 }
 
 # All PATH Variables
-# If you come from bash you might have to change your $PATH.
-# checkAndAppendPath 'PATH' "$HOME/bin"
-# checkAndAppendPath 'PATH' '/usr/local/bin'
-
 checkAndAppendPath 'PATH' "$HOME//bin"
-
-# # Yarn
-# checkAndAppendPath 'PATH' "$HOME/.yarn/bin"
-checkAndAppendPath 'PATH' "$HOME/.config/yarn/global/node_modules/.bin"
 
 # # Google Depot Tools (V8)
 # checkAndAppendPath 'PATH' '/usr/local/share/depot_tools'
@@ -73,19 +66,6 @@ checkAndAppendPath 'PATH' "$HOME/.config/yarn/global/node_modules/.bin"
 # # Kotlin
 # checkAndAppendPath 'PATH' "$(ifLinux '' '/Users/john.webb/kotlinc/bin')"
 
-# # Web assembly
-# checkAndAppendPath 'PATH' "$(ifLinux '//home/john/.local/share/emsdk' '/Users/john.webb/emsdk')"
-# checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/share/emsdk/clang/e1.38.25_64bit' '/Users/john.webb/emsdk/node/12.9.1_64bit/bin')"
-# checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/share/emsdk/node/8.9.1_64bit/bin' '/Users/john.webb/emsdk/upstream/emscripten')"
-# checkAndAppendPath 'PATH' "$(ifLinux '/home/john/.local/share/emsdk/emscripten/1.38.25' '')"
-
-# # Rust
-# checkAndAppendPath 'PATH' "$(ifLinux \"$HOME/.cargo/bin\" '')"
-
-# # Go
-# checkAndAppendPath 'PATH' "$(ifLinux '/usr/local/go/bin' '')"
-
-# # Add python auxilliary libraries to path
 # # Add Claude code path
 checkAndAppendPath 'PATH' "$HOME/.local/bin"
 
@@ -94,16 +74,17 @@ checkAndAppendPath 'PATH' "$HOME/Documents/bin"
 checkAndAppendPath 'PATH' "$HOME/Documents/bin/externals"
 
 # # Android Platform tools
-# # Android Home
 if [[ "$ENABLE_REACT_NATIVE" = true ]]; then
-  echo 'Adding Android studio to path'
-  checkAndAppendPath 'ANDROID_HOME' "$(ifLinux '/home/john/Android/Sdk' "$HOME/Library/Android/sdk")"
+  echo 'Android Studio to path'
+  if [[ -z "$ANDROID_HOME" ]]; then
+    checkAndAppendPath 'ANDROID_HOME' "$(ifLinux '/home/john/Android/Sdk' "$HOME/Library/Android/sdk")"
+  fi
   checkAndAppendPath 'PATH' "$(ifLinux '' "$ANDROID_HOME/platform-tools")"
 fi
 
-
-# # Gradle
-checkAndAppendPath 'PATH' "$(ifLinux '/opt/gradle/gradle-7.0.2/bin' '')"
-
 # # Mise
-checkAndAppendPath 'PATH' "$(ifLinux '' "$HOME/.local/share/mise/shims")"
+if [[ "$ENABLE_MISE" = true ]]; then
+  echo 'Adding Mise shims to path'
+  checkAndAppendPath 'PATH' "$(ifLinux '' "$HOME/.local/share/mise/shims")"
+fi
+
