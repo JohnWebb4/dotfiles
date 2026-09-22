@@ -11,15 +11,12 @@ source "$HOME/Documents/bin/addExternals"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
+# Git integration: Disable tracking file changes. For large repos
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 plugins=(
   git
-  z
 )
 
 # ZSH Config folder
@@ -31,16 +28,12 @@ source "$ZSH/oh-my-zsh.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Neovimdiff
-alias nvimdiff="nvim -d"
-
 # GPG
 export GPG_TTY=$(tty)
 
 if [[ "$ENABLE_REACT_NATIVE" = true ]]; then
   echo 'Enabling React Native'
   JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
-  # export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 fi
 
 # Fix less pager only updating the top half of the terminal on macbook
@@ -48,18 +41,19 @@ export LESS=-R
 
 # # FZF
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,.npm,.nvm,.Trash,node_modules,*/__snapshots__}/*" 2> /dev/null'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # # Elixir
-export 'KERL_CONFIGURE_OPTIONS'="$(ifLinux '' '--disable-silent-rules --enable-dynamic-ssl-lib --enable-shared-zlib --enable-smp-support --enable-threads --enable-wx --with-ssl=$(brew --prefix openssl@1.1) --without-javac --enable-kernel-poll --with-dynamic-trace=dtrace --enable-vm-probes --enable-darwin-64bit')"
+if [[ $isLinux ]]; then
+else
+  export 'KERL_CONFIGURE_OPTIONS'='--disable-silent-rules --enable-dynamic-ssl-lib --enable-shared-zlib --enable-smp-support --enable-threads --enable-wx --with-ssl=$(brew --prefix openssl@1.1) --without-javac --enable-kernel-poll --with-dynamic-trace=dtrace --enable-vm-probes --enable-darwin-64bit'
+fi
 
 # Cleanup
 # Unset OS name
 unset unameOut
 
 # Mise
-if [[ $isLinux ]]; then
-else
+if [[ $ENABLE_MISE ]]; then
+  echo 'Enabling Mise'
   eval "$(mise activate zsh)"
 fi
