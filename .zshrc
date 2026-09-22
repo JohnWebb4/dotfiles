@@ -11,6 +11,10 @@ source "$HOME/Documents/bin/addExternals"
 # Git integration: Disable tracking file changes. For large repos
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+# Tab completion case insensitive
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+
 # Google Cloud alias
 # alias gcurl='curl -H "Authorization: Bearer $(gcloud auth print-identity-token)" -H "Content-Type: application/json"'
 
