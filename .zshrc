@@ -8,20 +8,12 @@ fi
 source $HOME/env.zshrc
 source "$HOME/Documents/bin/addExternals"
 
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-
 # Git integration: Disable tracking file changes. For large repos
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-plugins=(
-  git
-)
-
-# ZSH Config folder
-ZSH="$HOME/.oh-my-zsh"
-source "$ZSH/oh-my-zsh.sh"
+# Tab completion case insensitive
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
 # Google Cloud alias
 # alias gcurl='curl -H "Authorization: Bearer $(gcloud auth print-identity-token)" -H "Content-Type: application/json"'
