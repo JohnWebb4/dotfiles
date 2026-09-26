@@ -1,11 +1,8 @@
-[user]
-	name = John Webb
-	email = John.Webb94@gmail.com
 [core]
 	editor = nvim
 [push]
 	default = upstream
-[includeIf "gitdir:~/"]
+[include]
 	path = ~/env.gitconfig
 [fetch]
 	prune = true

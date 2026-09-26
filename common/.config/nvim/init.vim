@@ -100,32 +100,6 @@ set signcolumn=yes
 
 filetype plugin on
 
-" QOL upgradez
-inoremap jk <Esc>
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>n :noh<CR>
-nnoremap <Leader>q :q<CR>
-
-nnoremap <Leader>S :vsplit<CR>
-nnoremap <Leader>h :split<CR>
-
-" hjkl keys navigate buffer splits
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-nnoremap <C-i> :%s/"/'/g<Cr> <bar> :noh<Cr>
-nnoremap <leader>r :edit<cr>
-
-nnoremap <C-t> :terminal<Cr>
-tnoremap <Esc> <C-\><C-n>
-
-" buffer nav shortcuts
-nnoremap <leader>b :ls<CR>
-nnoremap <leader>H :bn<CR>
-nnoremap <leader>L :bp<CR>
-
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -142,9 +116,6 @@ source $HOME/.config/nvim/bundles.vimrc
 
 call plug#end()
 
-" call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
-" call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
-
 if(s:uname == "Linux\n")
   if(has("nvim"))
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -155,19 +126,7 @@ endif
 " set t_Co=256
 " set termguicolors
 
-" Dark mode
-" set background=dark
-" colorscheme Black
-
-" Light mode
-" set background=light
-" colorscheme Tomorrow
-
 syntax on
-
-hi VimwikiHeader1 guifg=#a88cb3
-hi VimwikiHeader2 guifg=#759abd
-hi VimwikiHeader3 guifg=#7f9d77
 
 " ===============================================================================
 " Lightline Config
