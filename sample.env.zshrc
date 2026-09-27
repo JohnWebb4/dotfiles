@@ -1,2 +1,0 @@
-ENABLE_MISE=false
-ENABLE_REACT_NATIVE=false
