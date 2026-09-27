@@ -1,70 +1,62 @@
 # Windows (PowerShell) setup
 
-Native PowerShell port of the parts of this repo that are worth porting — no
-WSL required. This is config only; there's no `install.ps1` that installs
-tools for you.
+Ported parts of my bash setup. Config only.
 
-## What's ported
+Checklist to run through on a new machine. Install packages with winget or
+scoop, whichever you prefer.
+
+## Packages
+
+- [ ] Git for Windows
+- [ ] Neovim
+- [ ] ripgrep (`rg`)
+- [ ] fzf
+- [ ] [`win32yank`](https://github.com/equalsraf/win32yank): Neovim's Windows
+      clipboard provider. Without it, `clipboard+=unnamedplus` in `init.vim`
+      won't reach the system clipboard
+- [ ] Optional: [`mise`](https://mise.jdx.dev/) for tool version management
+
+## Link configs
+
+- [ ] From the repo root run `.\link.ps1`. It junctions `~\.config\nvim`,
+      symlinks `.vimrc`/`.tmux.conf` (needs Developer Mode; skipped with a
+      warning otherwise), adds a dot-source line for `powershell\Profile.ps1`
+      to `$PROFILE`, and adds an `[include]` for `common\.gitconfig` to
+      `~\.gitconfig`. Existing files are backed up as `*.bak`.
+- [ ] Copy `../common/sample.env.gitconfig` to `~\env.gitconfig` and fill it in
+      (signing key, etc.). The `includeIf "gitdir:~/"` in `.gitconfig` works
+      unchanged on Windows Git.
+- [ ] Optional: copy `sample.env.profile.ps1` to `~\env.profile.ps1` and set any
+      flags (`ENABLE_REACT_NATIVE`, etc.). This file is gitignored, same as
+      `~\env.zshrc` on Unix.
+
+## Verify
+
+- [ ] New `pwsh` window: no errors on startup, `$env:FZF_DEFAULT_COMMAND` is
+      set, and `Get-Command nvimdiff` resolves
+- [ ] `nvim`: `:echo $MYVIMRC` resolves, and vim-plug installs/loads plugins
+      under `~/.local/share/nvim/plugged` without errors
+- [ ] Yank a line in Neovim and paste it into another app (confirms `win32yank`)
+- [ ] `git config --get core.editor` prints `nvim`, and `git mergetool` on a
+      conflict opens `nvimdiff`
+- [ ] `nvimdiff file1 file2` from PowerShell opens a diff view
+
+## Notes
+
+### What's ported
 
 - **Env vars / PATH / the `nvimdiff` alias** → `powershell/Profile.ps1`
   (equivalent of the non-Oh-My-Zsh parts of `../bash/.zshrc` and the
   Windows-relevant parts of `../bash/Documents/bin/addExternals`).
-- **Neovim config** (`../common/.config/nvim/`) — needs no changes. It already
+- **Neovim config** (`../common/.config/nvim/`): needs no changes. It already
   defaults to a Windows-safe code path and runs natively.
-- **Git config** (`../common/.gitconfig`) — copy it as-is; `core.editor` now
-  points at `nvim` (works on all three OSes).
+- **Git config** (`../common/.gitconfig`): works as-is. `core.editor` points at
+  `nvim` (works on all three OSes).
 
-## What's NOT ported
+### What's NOT ported
 
-- **tmux** — no native Windows build. Would require WSL, which is out of
-  scope here.
-- **`../Documents/bin/*` scripts** — these are bash scripts (several with
+- **tmux**: no native Windows build. Would require WSL, which is out of scope
+  here.
+- **`../Documents/bin/*` scripts**: these are bash scripts (several with
   hardcoded Unix paths and dependencies like `awk`/`sed`/`ps`/`pbcopy`). They'd
   need individual rewrites as PowerShell equivalents; not part of this pass.
-- **Prompt/theme** — Oh My Zsh's `robbyrussell` theme has no equivalent here.
-  PowerShell keeps its default prompt. (Starship is a reasonable cross-shell
-  option later if you want parity with zsh.)
-
-## Prerequisites
-
-Install these yourself first (winget or scoop, whichever you prefer):
-
-- Git for Windows
-- Neovim
-- ripgrep (`rg`)
-- fzf
-- [`win32yank`](https://github.com/equalsraf/win32yank) — Neovim's Windows
-  clipboard provider; without it, `clipboard+=unnamedplus` in `init.vim` won't
-  actually reach the system clipboard
-- Optional: [`mise`](https://mise.jdx.dev/) for tool version management
-- Optional: `PSFzf` PowerShell module (`Install-Module PSFzf`) — fzf doesn't
-  wire up `Ctrl+T`/`Ctrl+R` in PowerShell on its own the way it does in zsh;
-  PSFzf is the standard way to get that
-
-## Setup
-
-1. **Link everything.** From the repo root run `.\link.ps1` It junctions `~\.config\nvim`, symlinks `.vimrc`/`.tmux.conf`(needs Developer Mode; skipped with a warning otherwise), adds a dot-source line for `powershell\Profile.ps1` to `$PROFILE`, and adds an
-   `[include]` for `common\.gitconfig` to `~\.gitconfig`. Existing files are
-   backed up as `*.bak`.
-
-2. **Git secrets/overrides.** Copy `../common/sample.env.gitconfig` to
-   `~\env.gitconfig` and fill in (signing key, etc.) — the
-   `includeIf "gitdir:~/"` in `.gitconfig` works unchanged on Windows Git.
-
-3. **Optional local overrides.** Copy `sample.env.profile.ps1` to
-   `~\env.profile.ps1` and set any flags (`ENABLE_REACT_NATIVE`, etc.). This
-   file is gitignored, same as `~\env.zshrc` on Unix.
-
-4. Open a new PowerShell window and confirm it loads cleanly (see
-   Verification below).
-
-## Verification
-
-- New `pwsh` window: `$env:FZF_DEFAULT_COMMAND` is set, `Get-Command
-nvimdiff` resolves, no errors on startup.
-- `nvim`: `:echo $MYVIMRC` resolves, vim-plug installs/loads plugins under
-  `~/.local/share/nvim/plugged` without errors.
-- Yank a line in Neovim, paste into another app (confirms `win32yank`).
-- `git config --get core.editor` prints `nvim`; `git mergetool` on a conflict
-  opens `nvimdiff`.
-- `nvimdiff file1 file2` from PowerShell opens a diff view.

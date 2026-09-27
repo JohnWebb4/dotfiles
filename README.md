@@ -7,7 +7,7 @@ Personal dotfiles and shell scripts. Repo root is `$HOME`;
 ## OS
 
 - **Linux** (Debian) (apt and optional xclip/gnome-tweaks on Linux)
-- **macOS** — install.sh branches on `main` (Homebrew).
+- **macOS** (Homebrew)
 - **Windows** (native PowerShell, no WSL) — config-only port, see
   [`powershell/README.md`](powershell/README.md).
 
@@ -16,7 +16,7 @@ Personal dotfiles and shell scripts. Repo root is `$HOME`;
 Split by tooling family, not OS: `common/` (shared config), `bash/`
 (POSIX/Unix tooling — ie. Mac and Linux),
 `powershell/` (Windows). Mac/Linux differences handled inline with
-`uname` checks within the shared files (see `bash/install.sh`, `bash/.zshrc`,
+`uname` checks within the shared files (see `bash/.zshrc`,
 `common/.vimrc`, etc.)
 
 ## Contents
@@ -35,9 +35,8 @@ Split by tooling family, not OS: `common/` (shared config), `bash/`
 
 ## General Setup
 
-1. Mac/Linux: run `bash/install.sh` to install packages. Prompts for Powerline
-   fonts; installs zsh, Oh My Zsh, nvm, Neovim, fzf, ag, rg, and on Mac:
-   Homebrew, Rectangle.
+1. Mac/Linux: work through the checklist in [`bash/README.md`](bash/README.md).
+1. Windows: work through the checklist in [`powershell/README.md`](powershell/README.md).
 1. Link configs into `$HOME`: `./link.sh` (Mac/Linux) or `.\link.ps1` (Windows).
    Layout: `common/` (shared), `bash/` (Mac/Linux), `powershell/` (Windows).
 1. Address issues
