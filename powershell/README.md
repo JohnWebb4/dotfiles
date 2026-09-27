@@ -6,13 +6,13 @@ tools for you.
 
 ## What's ported
 
-- **Env vars / PATH / the `nvimdiff` alias** → `windows/Profile.ps1`
-  (equivalent of the non-Oh-My-Zsh parts of `../.zshrc` and the
-  Windows-relevant parts of `../Documents/bin/addExternals`).
-- **Neovim config** (`../.config/nvim/`) — needs no changes. It already
+- **Env vars / PATH / the `nvimdiff` alias** → `powershell/Profile.ps1`
+  (equivalent of the non-Oh-My-Zsh parts of `../bash/.zshrc` and the
+  Windows-relevant parts of `../bash/Documents/bin/addExternals`).
+- **Neovim config** (`../common/.config/nvim/`) — needs no changes. It already
   defaults to a Windows-safe code path and runs natively.
-- **Git config** (`../.gitconfig`) — copy it as-is; `core.editor` now points
-  at `nvim` (works on all three OSes).
+- **Git config** (`../common/.gitconfig`) — copy it as-is; `core.editor` now
+  points at `nvim` (works on all three OSes).
 
 ## What's NOT ported
 

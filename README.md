@@ -1,8 +1,8 @@
-# Configuration Dot Files and AI Skills
+# Configuration Dot Files
 
 - All configuration files and setup steps when setting up ZSH terminal
 
-Personal dotfiles, shell scripts, and Cursor AI skills. Repo root is `$HOME`;
+Personal dotfiles and shell scripts. Repo root is `$HOME`;
 
 ## OS
 
@@ -18,23 +18,18 @@ Personal dotfiles, shell scripts, and Cursor AI skills. Repo root is `$HOME`;
 | **Dotfiles**      | `~/.zshrc`, `~/.bashrc`, `~/.profile`, `~/.vimrc`, `~/.gitconfig` | Shell and editor config. Copy `sample.env.zshrc` / `sample.env.gitconfig` and fill in before use.                                                                                     |
 | **Neovim**        | `~/.config/nvim/`                                                 | `init.vim`, bundles, lightline, fzf. Expects [vim-plug](https://github.com/junegunn/vim-plug).                                                                                        |
 | **Scripts**       | `~/Documents/bin/`                                                | Small bash (and a few Node/Python) helpers: e.g. `trash`, `killmatch`, `setjava`, `open`, npm/yarn outdated checkers. Add to `PATH` if you want them global.                          |
-| **Cursor skills** | `~/.cursor/skills/`, `~/.cursor/skills-cursor/`                   | Agent skills (write-tickets, technical-writer, dev-workflow-write-pr, investigate-create-doc, worktree-manager, create-rule, update-cursor-settings, etc.). One `SKILL.md` per skill. |
-| **Windows**       | `windows/`                                                        | PowerShell profile + setup notes (git config, env vars/PATH, Neovim). tmux and `Documents/bin/*` are not ported.                                                                      |
+| **Windows**       | `powershell/`                                                     | PowerShell profile + setup notes (git config, env vars/PATH, Neovim). tmux and `Documents/bin/*` are not ported.                                                                      |
 
 ## Includes
 
 - My Bash Scripts
 - Terminal Config
-- AI skills
 
 ## General Setup
 
-1. Mac/Linux: run `bash/install.sh` to install packages
+1. Mac/Linux: run `bash/install.sh` to install packages. Prompts for Powerline
+   fonts; installs zsh, Oh My Zsh, nvm, Neovim, fzf, ag, rg, and on Mac:
+   Homebrew, Rectangle.
 1. Link configs into `$HOME`: `./link.sh` (Mac/Linux) or `.\link.ps1` (Windows).
-   .Layout: `common/` (shared), `bash/` (Mac/Linux),`powershell/` (Windows).
+   Layout: `common/` (shared), `bash/` (Mac/Linux), `powershell/` (Windows).
 1. Address issues
-
-## Setup
-
-1. **Install**  
-   From repo root: `./install.sh` (no args). Prompts for Powerline fonts; installs zsh, Oh My Zsh, nvm, Neovim, fzf, ag, rg, and on Mac: Homebrew, Rectangle.
