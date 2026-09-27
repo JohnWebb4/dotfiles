@@ -11,6 +11,14 @@ Personal dotfiles and shell scripts. Repo root is `$HOME`;
 - **Windows** (native PowerShell, no WSL) — config-only port, see
   [`powershell/README.md`](powershell/README.md).
 
+## Structure
+
+Split by tooling family, not OS: `common/` (shared config), `bash/`
+(POSIX/Unix tooling — ie. Mac and Linux),
+`powershell/` (Windows). Mac/Linux differences handled inline with
+`uname` checks within the shared files (see `bash/install.sh`, `bash/.zshrc`,
+`common/.vimrc`, etc.)
+
 ## Contents
 
 | Area              | Location                                                          | Notes                                                                                                                                                                                 |
@@ -22,8 +30,8 @@ Personal dotfiles and shell scripts. Repo root is `$HOME`;
 
 ## Includes
 
-- My Bash Scripts
 - Terminal Config
+- Some Scripts
 
 ## General Setup
 
