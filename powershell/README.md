@@ -43,31 +43,25 @@ Install these yourself first (winget or scoop, whichever you prefer):
 
 ## Setup
 
-1. **Wire up the profile.** Add this line to your real profile (find its path
-   with `$PROFILE`, typically
-   `~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1`):
+1. **Link everything.** From the repo root run `.\link.ps1` It junctions `~\.config\nvim`, symlinks `.vimrc`/`.tmux.conf`(needs Developer Mode; skipped with a warning otherwise), adds a dot-source line for `powershell\Profile.ps1` to `$PROFILE`, and adds an
+   `[include]` for `common\.gitconfig` to `~\.gitconfig`. Existing files are
+   backed up as `*.bak`.
 
-   ```powershell
-   . "C:\path\to\this\repo\windows\Profile.ps1"
-   ```
-
-2. **Git config.** Copy `../.gitconfig` to `~\.gitconfig`.
-
-3. **Git secrets/overrides.** Copy `../sample.env.gitconfig` to
+2. **Git secrets/overrides.** Copy `../common/sample.env.gitconfig` to
    `~\env.gitconfig` and fill in (signing key, etc.) — the
    `includeIf "gitdir:~/"` in `.gitconfig` works unchanged on Windows Git.
 
-4. **Optional local overrides.** Copy `sample.env.profile.ps1` to
+3. **Optional local overrides.** Copy `sample.env.profile.ps1` to
    `~\env.profile.ps1` and set any flags (`ENABLE_REACT_NATIVE`, etc.). This
    file is gitignored, same as `~\env.zshrc` on Unix.
 
-5. Open a new PowerShell window and confirm it loads cleanly (see
+4. Open a new PowerShell window and confirm it loads cleanly (see
    Verification below).
 
 ## Verification
 
 - New `pwsh` window: `$env:FZF_DEFAULT_COMMAND` is set, `Get-Command
-  nvimdiff` resolves, no errors on startup.
+nvimdiff` resolves, no errors on startup.
 - `nvim`: `:echo $MYVIMRC` resolves, vim-plug installs/loads plugins under
   `~/.local/share/nvim/plugged` without errors.
 - Yank a line in Neovim, paste into another app (confirms `win32yank`).
