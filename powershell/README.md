@@ -14,7 +14,6 @@ scoop, whichever you prefer.
 - [ ] [`win32yank`](https://github.com/equalsraf/win32yank): Neovim's Windows
       clipboard provider. Without it, `clipboard+=unnamedplus` in `init.vim`
       won't reach the system clipboard
-- [ ] Optional: [`mise`](https://mise.jdx.dev/) for tool version management
 
 ## Link configs
 
@@ -56,7 +55,7 @@ scoop, whichever you prefer.
 ### What's NOT ported
 
 - **tmux**: no native Windows build. Would require WSL, which is out of scope
-  here.
+  here. See [PSMux](https://github.com/psmux/psmux)
 - **`../Documents/bin/*` scripts**: these are bash scripts (several with
   hardcoded Unix paths and dependencies like `awk`/`sed`/`ps`/`pbcopy`). They'd
   need individual rewrites as PowerShell equivalents; not part of this pass.
