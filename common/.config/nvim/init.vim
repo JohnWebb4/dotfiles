@@ -100,12 +100,6 @@ set signcolumn=yes
 
 filetype plugin on
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
 if(s:uname == "Linux\n")
   call plug#begin('~/.config/nvim/autoload')
 else
