@@ -122,10 +122,6 @@ if(s:uname == "Linux\n")
   endif
 endif
 
-" Disable for Mac OS terminal
-" set t_Co=256
-" set termguicolors
-
 syntax on
 
 " ===============================================================================

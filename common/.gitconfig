@@ -1,5 +1,7 @@
 [core]
 	editor = nvim
+[init]
+	defaultBranch = main
 [push]
 	default = upstream
 [include]
@@ -7,6 +9,8 @@
 [fetch]
 	prune = true
 [commit]
+	gpgsign = true
+[tag]
 	gpgsign = true
 [filter "lfs"]
 	process = git-lfs filter-process

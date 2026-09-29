@@ -1,10 +1,7 @@
-# PowerShell equivalent of the non-Oh-My-Zsh parts of ../bash/.zshrc and the
-# Windows-relevant parts of ../bash/Documents/bin/addExternals.
-#
 # Dot-sourced from $PROFILE; run ..\link.ps1 to add that line for you.
 # See powershell/README.md for full setup steps.
 
-# Local, untracked overrides/secrets (mirrors ~/env.zshrc on Unix). Sourced
+# Local, untracked overrides/secrets. Sourced
 # early so flags like ENABLE_REACT_NATIVE below are already set.
 $envProfile = Join-Path $HOME 'env.profile.ps1'
 if (Test-Path $envProfile) {
@@ -20,6 +17,9 @@ $env:XDG_CONFIG_HOME = Join-Path $HOME '.config'
 $env:FZF_DEFAULT_COMMAND = 'rg --files --no-ignore --hidden --follow -g "!{.git,.npm,.nvm,.Trash,node_modules,*/__snapshots__}/*" 2> nul'
 $env:FZF_CTRL_T_COMMAND = $env:FZF_DEFAULT_COMMAND
 $env:FZF_ALT_C_COMMAND = $env:FZF_DEFAULT_COMMAND
+
+# Tab completion
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
 # Mise activation (if installed)
 if (Get-Command mise -ErrorAction SilentlyContinue) {
