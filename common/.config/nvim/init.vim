@@ -98,6 +98,13 @@ set updatetime=300
 
 set signcolumn=yes
 
+let s:theme = system('defaults read -g AppleInterfaceStyle 2>&1')
+if v:shell_error == 0 && s:theme =~ 'Dark'
+    set background=dark
+else
+    set background=light
+endif
+
 filetype plugin on
 
 if(s:uname == "Linux\n")
