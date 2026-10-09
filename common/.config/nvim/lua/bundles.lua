@@ -2,11 +2,11 @@
 --     Dependencies
 --  =========================================
 
-local Plug = vim.fn['plug#']
-
-Plug('tpope/vim-fugitive')
-Plug('f-person/auto-dark-mode.nvim')
-Plug('itchyny/lightline.vim')
-Plug('junegunn/fzf')
-Plug('junegunn/fzf.vim')
-Plug('prettier/vim-prettier')
+vim.pack.add({
+  { src = 'https://github.com/tpope/vim-fugitive' },
+  { src = 'https://github.com/f-person/auto-dark-mode.nvim' },
+  { src = 'https://github.com/itchyny/lightline.vim' },
+  { src = 'https://github.com/junegunn/fzf' },
+  { src = 'https://github.com/junegunn/fzf.vim' },
+  { src = 'https://github.com/prettier/vim-prettier' },
+})

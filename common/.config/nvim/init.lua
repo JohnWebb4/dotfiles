@@ -92,15 +92,10 @@ vim.opt.cmdheight = 2
 
 vim.opt.signcolumn = yes
 
-if uname == "Linux\n" then
-  vim.call('plug#begin', '~/.config/nvim/autoload')
-else
-  vim.call('plug#begin', '~/.local/share/nvim/plugged')
-end
-
+-- ===============================================================================
+-- Vim Pack Config
+-- ===============================================================================
 require("bundles")
-
-vim.call("plug#end")
 
 require("auto-dark-mode").setup()
 

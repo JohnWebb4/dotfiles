@@ -1,0 +1,28 @@
+{
+  "plugins": {
+    "auto-dark-mode.nvim": {
+      "rev": "2b16a24c202892e61fca7df4d2d7c4c872a44165",
+      "src": "https://github.com/f-person/auto-dark-mode.nvim"
+    },
+    "fzf": {
+      "rev": "33a3456921a17c53f42f8610783b6d379d652d3e",
+      "src": "https://github.com/junegunn/fzf"
+    },
+    "fzf.vim": {
+      "rev": "023de3c0e158ff9c2b0992175af10be97c2f2158",
+      "src": "https://github.com/junegunn/fzf.vim"
+    },
+    "lightline.vim": {
+      "rev": "255f61db1a4cc36ee11eb479261d6bc471ed0819",
+      "src": "https://github.com/itchyny/lightline.vim"
+    },
+    "vim-fugitive": {
+      "rev": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0",
+      "src": "https://github.com/tpope/vim-fugitive"
+    },
+    "vim-prettier": {
+      "rev": "c4d3e8588d83df638dcca8087cf9741433d3ca43",
+      "src": "https://github.com/prettier/vim-prettier"
+    }
+  }
+}
