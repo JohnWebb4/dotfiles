@@ -10,6 +10,7 @@ LINKS=(
   "common/.vimrc|.vimrc"
   "common/.tmux.conf|.tmux.conf"
   "common/.config/nvim|.config/nvim"
+  "common/.claude/settings.json|.claude/settings.json"
   "bash/.zshrc|.zshrc"
   "bash/.bashrc|.bashrc"
   "bash/.profile|.profile"
