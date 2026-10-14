@@ -15,6 +15,11 @@ scoop, whichever you prefer.
       clipboard provider. Without it, `clipboard+=unnamedplus` in `init.vim`
       won't reach the system clipboard
 
+## Apps
+
+- [ ] [VS Code](https://code.visualstudio.com/), plus the
+      [`code` CLI](https://code.visualstudio.com/docs/editor/command-line)
+
 ## Link configs
 
 - [ ] From the repo root run `.\link.ps1`. It junctions `~\.config\nvim`,
