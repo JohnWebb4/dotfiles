@@ -1,0 +1,11 @@
+.git
+node_modules
+target
+build
+__snapshots__
+Pods
+tmp
+.npm
+.nvm
+.Trash
+.venv

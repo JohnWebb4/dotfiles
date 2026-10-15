@@ -12,9 +12,14 @@ if (Test-Path $envProfile) {
 # link.ps1 junctions common\.config\nvim) like on Unix.
 $env:XDG_CONFIG_HOME = Join-Path $HOME '.config'
 
-# FZF (same file-search pattern as .zshrc). Note: fzf on Windows runs this
-# command via cmd.exe by default, so redirect to 'nul', not '/dev/null'.
-$env:FZF_DEFAULT_COMMAND = 'rg --files --no-ignore --hidden --follow -g "!{.git,.npm,.nvm,.Trash,node_modules,*/__snapshots__}/*" 2> nul'
+# FZF: ignore list shared with nvim and .zshrc (common\.config\nvim\fzf-ignore.txt).
+# fzf on Windows runs this command via cmd.exe by default, so redirect to
+# 'nul', not '/dev/null'.
+$fzfIgnoreFile = Join-Path $HOME '.config\nvim\fzf-ignore.txt'
+if (Test-Path $fzfIgnoreFile) {
+    $fzfIgnore = (Get-Content $fzfIgnoreFile | Where-Object { $_.Trim() }) -join ','
+    $env:FZF_DEFAULT_COMMAND = "rg --files --no-ignore --hidden --follow -g `"!{$fzfIgnore}`" 2> nul"
+}
 $env:FZF_CTRL_T_COMMAND = $env:FZF_DEFAULT_COMMAND
 $env:FZF_ALT_C_COMMAND = $env:FZF_DEFAULT_COMMAND
 

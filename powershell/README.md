@@ -10,6 +10,7 @@ scoop, whichever you prefer.
 - [ ] Git for Windows
 - [ ] Neovim
 - [ ] ripgrep (`rg`)
+- [ ] The Silver Searcher (`ag`), used by the Neovim `:Ag` command
 - [ ] fzf
 - [ ] [`win32yank`](https://github.com/equalsraf/win32yank): Neovim's Windows
       clipboard provider. Without it, `clipboard+=unnamedplus` in `init.vim`

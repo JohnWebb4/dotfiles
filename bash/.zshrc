@@ -33,7 +33,11 @@ export LESS=-R
 
 # # FZF
 # # SEE .config/nvim/lua/fzf-config.lua
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules,target,build,__snapshots__,Pods,target,tmp}" 2> /dev/null'
+# # Ignore list shared with nvim and PowerShell: .config/nvim/fzf-ignore.txt
+FZF_IGNORE_FILE="$HOME/.config/nvim/fzf-ignore.txt"
+if [[ -f $FZF_IGNORE_FILE ]]; then
+  export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow -g '!{${(j:,:)${(f)"$(<$FZF_IGNORE_FILE)"}}}' 2> /dev/null"
+fi
 
 # # Elixir
 if [[ $isLinux ]]; then
