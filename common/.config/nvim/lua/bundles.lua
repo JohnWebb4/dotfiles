@@ -8,5 +8,5 @@ vim.pack.add({
   { src = 'https://github.com/itchyny/lightline.vim' },
   { src = 'https://github.com/junegunn/fzf' },
   { src = 'https://github.com/junegunn/fzf.vim' },
-  { src = 'https://github.com/prettier/vim-prettier' },
+  { src = 'https://github.com/stevearc/conform.nvim' },
 })

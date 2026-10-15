@@ -4,6 +4,10 @@
       "rev": "2b16a24c202892e61fca7df4d2d7c4c872a44165",
       "src": "https://github.com/f-person/auto-dark-mode.nvim"
     },
+    "conform.nvim": {
+      "rev": "016802de402556da54c36bd7359b441266b01cdd",
+      "src": "https://github.com/stevearc/conform.nvim"
+    },
     "fzf": {
       "rev": "33a3456921a17c53f42f8610783b6d379d652d3e",
       "src": "https://github.com/junegunn/fzf"
@@ -19,10 +23,6 @@
     "vim-fugitive": {
       "rev": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0",
       "src": "https://github.com/tpope/vim-fugitive"
-    },
-    "vim-prettier": {
-      "rev": "c4d3e8588d83df638dcca8087cf9741433d3ca43",
-      "src": "https://github.com/prettier/vim-prettier"
     }
   }
 }

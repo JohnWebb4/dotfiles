@@ -30,12 +30,15 @@ vim.opt.foldenable = false                 -- Remove ugly folds
 
 vim.opt.inccommand = "split"
 
-vim.opt.wildignore:append({ "*.DS_Store" })
-vim.opt.wildignore:append({ "*/_build**" })
-vim.opt.wildignore:append({ "*/node_modules/**" })
-vim.opt.wildignore:append({ "*/__snapshots__/**" })
-vim.opt.wildignore:append({ "target/**" })
-vim.opt.wildignore:append({ "+=tmp/**" });
+-- See: lua/fzf-config
+vim.opt.wildignore:append("*.DS_Store")
+vim.opt.wildignore:append("**/.git/*")
+vim.opt.wildignore:append("**/node_modules/*")
+vim.opt.wildignore:append("**/build/*")
+vim.opt.wildignore:append("**/__snapshots__/*")
+vim.opt.wildignore:append("**/Pods/*")
+vim.opt.wildignore:append("**/target/*")
+vim.opt.wildignore:append("**/tmp/*");
 vim.opt.scrolloff = 5                        -- show context above/below cursor line
 
 vim.opt.ignorecase = true                    -- case-insensitive search
@@ -74,4 +77,14 @@ vim.opt.termguicolors = true
 -- ===============================================================================
 -- Lightline Config
 -- ===============================================================================
-require("lightline")
+require("lightline-config")
+
+-- ===============================================================================
+-- FZF Config
+-- ===============================================================================
+require("fzf-config")
+
+-- ===============================================================================
+-- Conform Config
+-- ===============================================================================
+require("conform-config")

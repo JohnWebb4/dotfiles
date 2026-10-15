@@ -32,7 +32,8 @@ fi
 export LESS=-R
 
 # # FZF
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,.npm,.nvm,.Trash,node_modules,*/__snapshots__}/*" 2> /dev/null'
+# # SEE .config/nvim/lua/fzf-config.lua
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules,target,build,__snapshots__,Pods,target,tmp}" 2> /dev/null'
 
 # # Elixir
 if [[ $isLinux ]]; then
