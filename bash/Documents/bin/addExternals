@@ -73,6 +73,9 @@ checkAndAppendPath 'PATH' "$HOME/.local/bin"
 checkAndAppendPath 'PATH' "$HOME/Documents/bin"
 checkAndAppendPath 'PATH' "$HOME/Documents/bin/externals"
 
+# # Postgres SQL 16
+checkAndAppendPath 'PATH' "/opt/homebrew/opt/postgresql@16/bin"
+
 # # Android Platform tools
 if [[ "$ENABLE_REACT_NATIVE" = true ]]; then
   echo 'Adding Android Studio to path'

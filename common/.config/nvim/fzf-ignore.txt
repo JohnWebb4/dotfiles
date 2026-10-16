@@ -1,5 +1,12 @@
 .git
+.svn
+.hg
+.jj
+.DS_Store
+Thumbs.db
 node_modules
+bower_components
+*.code-search
 target
 build
 __snapshots__
@@ -9,3 +16,7 @@ tmp
 .nvm
 .Trash
 .venv
+DerivedData
+vendor
+.yarn
+.jest
