@@ -20,3 +20,8 @@ DerivedData
 vendor
 .yarn
 .jest
+deps
+_build
+priv
+installer
+config
