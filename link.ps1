@@ -11,6 +11,7 @@ $Dirs = @(
 $Files = @(
     @{ Src = 'common\.vimrc'; Dest = '.vimrc' }
     @{ Src = 'common\.tmux.conf'; Dest = '.tmux.conf' }
+    @{ Src = 'common\.claude\settings.json'; Dest = '.claude\settings.json' }
 )
 
 function Get-LinkTarget($path) {
